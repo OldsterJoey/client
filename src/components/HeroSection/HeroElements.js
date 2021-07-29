@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ParticleStyle = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: #54376E;
@@ -12,6 +12,12 @@ export const ParticleStyle = styled.div`
 
 export const HeroContainer = styled.div`
     display: flex;
+    vertical-align: bottom;
+    /* overflow-y: scroll; */
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    height: 980px;
+
 `
 export const HeroContent = styled.div`
     z-index: 1;
@@ -25,7 +31,7 @@ export const HeroImg = styled.img``
 
 export const HeroHeading = styled.h1`
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     @media screen and (max-width: 780px) {
         font-size: 40px;
