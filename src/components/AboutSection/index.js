@@ -1,5 +1,4 @@
 import React from 'react'
-// import Particle from '../Particle'
 import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper,BtnLink } from './AboutElements'
 
 
@@ -8,9 +7,7 @@ const AboutSection = () => {
     return (
         <>
         <AboutContainer>
-            {/* <AboutParticleStyle>
-                 <Particle />
-             </AboutParticleStyle> */}
+
             <AboutContent id="about">
                 <AboutHeading>Find presents for your kids with 3 easy steps:</AboutHeading>
                 <Wrapper>

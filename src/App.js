@@ -1,17 +1,40 @@
 import './App.css';
-import Home from './pages/index'
+import React,{useState, useReducer, useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import SignIn from './components/SignIn/SignIn';
+import stateReducer from './utils/stateReducer'
+import {StateContext} from './utils/stateContext'
+import Home from './pages/index'
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+
+
+
+
 
 
 function App() {
+
+  const initialState = {
+		loggedInUser: null,
+		auth: {token: null}
+	}
+	const [store, dispatch] = useReducer(stateReducer,initialState)
   return (
-    <Router>
-      <Switch>
-        <Route path="/signin" component={SignIn} exact/>
-        <Route path="/" component={Home} exact/>
-      </Switch>
-    </Router>
+    <div>
+      <StateContext.Provider 
+      value={{store,dispatch}}
+      >
+        <Router>
+          <Switch>            
+            <Route path="/" component={Home} exact/>
+            <Route path="/sign_in" component={SignIn}></Route>
+            <Route path="/sign_up" component={SignUp}></Route>
+
+
+          </Switch>
+        </Router>
+      </StateContext.Provider>
+    </div>
   )
 }
 
