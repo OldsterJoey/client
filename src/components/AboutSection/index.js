@@ -1,9 +1,15 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
+
 import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper,BtnLink } from './AboutElements'
+import {Button} from '../Styled'
+import {useGlobalState} from '../../utils/stateContext'
 
 
 
 const AboutSection = () => {
+    let history = useHistory()
+
     return (
         <>
         <AboutContainer>
@@ -23,7 +29,7 @@ const AboutSection = () => {
                 </Wrapper>
                 <AboutText>Our app will find the closest matching present from the online shop - just save the shop link and price to your budget shopping list!</AboutText>
                 <AboutBtnWrapper>
-                    <BtnLink>Let's Go</BtnLink>
+                    <Button onClick={() => history.push('/sign_in')}>Sign In</Button>
                 </AboutBtnWrapper>
             </AboutContent> 
 
