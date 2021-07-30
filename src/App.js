@@ -1,10 +1,13 @@
 import './App.css';
-import Home from './pages/index'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import SignIn from './components/SignIn/SignIn';
-
 import React,{useState, useReducer, useEffect} from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import stateReducer from './utils/stateReducer'
 import {StateContext} from './utils/stateContext'
+import Home from './pages/index'
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+
+
 
 
 
@@ -12,18 +15,22 @@ import {StateContext} from './utils/stateContext'
 function App() {
 
   const initialState = {
-		wishes: [],
 		loggedInUser: null,
 		auth: {token: null}
 	}
 	const [store, dispatch] = useReducer(stateReducer,initialState)
   return (
     <div>
-      <StateContext.Provider value={{store,dispatch}}>
+      <StateContext.Provider 
+      value={{store,dispatch}}
+      >
         <Router>
-          <Switch>
-            <Route path="/signin" component={SignIn} exact/>
+          <Switch>            
             <Route path="/" component={Home} exact/>
+            <Route path="/sign_in" component={SignIn}></Route>
+            <Route path="/sign_up" component={SignUp}></Route>
+
+
           </Switch>
         </Router>
       </StateContext.Provider>

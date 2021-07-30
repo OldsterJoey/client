@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {Button, Label, Input} from '../Styled'
-import {signIn} from '../../services/authServices'
-import {useGlobalState} from '../../utils/stateContext'
+import {Button, Label, Input} from './Styled'
+import {signIn} from '../services/authServices'
+import {useGlobalState} from '../utils/stateContext'
 
 
 export default function SignIn({history}) {
@@ -35,7 +35,9 @@ export default function SignIn({history}) {
 			<Input type='email' name='email' value={formState.username} onChange={handleChange}></Input>
 			<Label>Password:</Label>
 			<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
-			<Button onClick={handleSubmit}>Login</Button>
+			<Button onClick={handleSubmit}>Log In</Button>
+            <Button onClick={() => history.push('/sign_up')}>Sign Up</Button>
+			<p>Password Recovery</p>
 		</form>
 	)
 }
