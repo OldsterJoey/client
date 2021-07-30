@@ -46,12 +46,12 @@ export const AboutHeading = styled.h1`
     font-size: 2rem;
     text-align: center;
     @media screen and (max-width: 780px) {
-        font-size: 32px;
+        font-size: 1.5rem;
         padding-left: 24px;
         padding-right: 24px;
     }
     @media screen and (max-width: 480px) {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 `
 export const AboutHeading2 = styled.h1`
@@ -73,9 +73,11 @@ export const AboutText = styled.h2`
     font-size: 18px;
     text-align: center;
 @media screen and (max-width: 780px) {
-        font-size: 18px;
+        font-size: 16px;
         padding-left: 24px;
         padding-right: 24px;
+        max-width: 600px;
+
     }
     @media screen and (max-width: 480px) {
         font-size: 12px;
