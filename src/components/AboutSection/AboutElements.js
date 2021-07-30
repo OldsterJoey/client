@@ -55,14 +55,14 @@ export const AboutHeading = styled.h1`
     }
 `
 export const AboutHeading2 = styled.h1`
-    color: #fff;
-    font-size: 1.5rem;
+    color: #000;
+    font-size: 1rem;
     text-align: center;
-
+    padding: 0;
+    margin-top: 5px;
     @media screen and (max-width: 780px) {
-        font-size: 1.2rem;
-        padding-left: 10px;
-        padding-right: 10px;
+        font-size: 1rem;
+
     }
     @media screen and (max-width: 480px) {
         font-size: 1rem;
@@ -94,10 +94,10 @@ export const AboutBtnWrapper = styled.div`
 
 export const BtnLink = styled(LinkRouter)`
     border-radius: 15px;
-    background: #2E1518;
+    background: #fff;
     white-space: nowrap;
     padding: 16px 32px;
-    color: #fff;
+    color: #000;
     font-size: 16px;
     outline: none;
     border: none;
@@ -112,4 +112,17 @@ export const BtnLink = styled(LinkRouter)`
         background: #DA7B93;
         color: #000;
 }
+`
+
+export const Wrapper = styled.div`
+    width: 30px;
+    z-index: 0;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #fff;
+    padding: 6px 6px 6px;
+    text-align: center;
+    justify-self: center;
+
+
 `

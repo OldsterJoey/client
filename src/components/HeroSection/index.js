@@ -21,13 +21,9 @@ const HeroSection = () => {
         <HeroContent>
             <HeroImg src={Image} alt={"logo"}/>
             <HeroHeading>Kids Presents Search Made Easy!</HeroHeading>
-            <UseAnimations
-            animationKey="arrowDown" 
-            to="about"
-            wrapperStyle={{ color: "#fff" }}
-            strokeColor="#fff"
-            animation="x-cross"
-            duration={500}
+
+            <UseAnimations animation="arrowDown" size={100} strokeColor={"#fff"} wrapperStyle={{color: "#fff"}} autoplay={true}
+
             onMouseEnter={onHover}
             onMouseLeave={onHover} />
         </HeroContent>
