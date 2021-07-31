@@ -6,6 +6,7 @@ import {StateContext} from './utils/stateContext'
 import Home from './pages/index'
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Main from './components/Main'
 
 
 
@@ -29,6 +30,8 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
+            <Route path="/main" component={Main}></Route>
+
 
 
           </Switch>

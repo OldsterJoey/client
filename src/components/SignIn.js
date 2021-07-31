@@ -24,7 +24,7 @@ export default function SignIn({history}) {
 			console.log(username, jwt);
 			dispatch({type: 'setLoggedInUser', data: username})
 			dispatch({type: 'setToken', data: jwt})
-			history.push('/')
+			history.push('/main')
 		})
 		.catch((error) => console.log(error))
 

@@ -25,7 +25,7 @@ export default function SignUp() {
 		signUp(formState)
 		.then((user) => {
 			dispatch({type: 'setLoggedInUser', data: user.username})
-			history.push('/jokes')
+			history.push('/main')
 		})
 	}
 	return (
