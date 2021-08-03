@@ -1,10 +1,8 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper,BtnLink } from './AboutElements'
+import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper } from './AboutElements'
 import {Button} from '../Styled'
-import {useGlobalState} from '../../utils/stateContext'
-
 
 
 const AboutSection = () => {

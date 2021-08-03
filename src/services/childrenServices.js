@@ -1,10 +1,10 @@
-import {userPics} from '../utils/userPics'
-
+import {wishlists} from './wishlistsServices.js'
+import{userPics} from '../utils/userPics'
 const children = [
     {
         child_id: 1, 
         name: "Elizabeth", 
-        userPic_id: 2, 
+        url: ('./icons/icon2.svg'), 
         wishlist_id: 1,
         created_at: "2021-01-11T01:33:50.019Z", 
         updated_at: "2021-01-11T01:33:50.019Z", 
@@ -13,21 +13,25 @@ const children = [
     {
         child_id: 2, 
         name: "Dylan", 
-        userPic_id: 3,
-        wishlist_id: 1,
+        url: ('./icons/icon2.svg'), 
+        wishlist_id: 2,
         created_at: "2021-01-11T01:33:50.019Z", 
         updated_at: "2021-01-11T01:33:50.019Z", 
         user_id: 1
     },
 ]
 
+// helper methpod to descructure data of children
 function transformChildren(child){
-    const userPic = userPics.find(userPic => userPic.id === children.userPic_id)
-    return {
+    const wishlist = wishlists.find(wishlist => wishlist.id === child.wishlist_id)
+    return{
+        id: child.child_id,
         name: child.name,
-        wishlist: child.wishlist_id
-        icon: userPic.icon
+        // wishlist: child.wishlist_id,
+        wishlist: wishlist.name,
+        userPic: child.userPic
     }
+
 }
 
 export async function getChildren(){
@@ -35,7 +39,7 @@ export async function getChildren(){
 }
 
 export async function getChild(id){
-    const child = child.find(child => child.id == id)
+    const child = children.find(child => child.id === id)
     return child ? transformChildren(child) : null
 }
 

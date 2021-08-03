@@ -1,6 +1,4 @@
-import {children} from '../childrenServices.js'
-
-const wishlists =[
+export const wishlists =[
 
     {
         id: 1, 
@@ -24,11 +22,12 @@ const wishlists =[
     }
 ]
 
+// helper method to descructure data in wishlist
 function transformWishlist(wishlist){
-    const child = children.find(child => child.id === wishlist.child_id)
+    // const child = children.find(child => child.id === wishlist.child_id)
     return {
-        mainUser: "Parent",
-        name: child.name,
+        // mainUser: child.name,
+        name: wishlist.name,
         posted: wishlist.created_at,
         updated: wishlist.updated_at,
         wishes: wishlist.wishes
@@ -71,3 +70,4 @@ export async function getWish(id){
     const wish = wishlists.find(wish => wish.id === id)
     return wish
 }
+
