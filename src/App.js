@@ -35,7 +35,7 @@ function App() {
 		getWishlists()
 		.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
 		.catch((error) => console.log(error))
-	},)
+	},[])
 
   return (
     <div>

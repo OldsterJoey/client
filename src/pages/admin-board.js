@@ -1,8 +1,6 @@
 import React from 'react'
-// import Parent from '../components/Parent'
-// import Children from '../components/Children'
-// import Wishlist from '../components/Wishlist'
-import ChildWishlist from '../components/ChildWishlist'
+import Children from '../components/Children'
+import Wishlist from '../components/Wishlist'
 
 export default function Admin({history}) {
     
@@ -10,7 +8,8 @@ export default function Admin({history}) {
         <div>
             <h1>Welcome to Wishfully</h1>
             <h2>We have a few wishes saved:</h2>
-                <ChildWishlist />
+                <Children />
+                <Wishlist />
         </div>
     )
 }
