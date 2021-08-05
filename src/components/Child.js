@@ -1,4 +1,5 @@
 import React from 'react'
+import Wishlist from './Wishlist'
 
 export default function Child({child, index}){
     if(!child) return null
@@ -7,6 +8,7 @@ export default function Child({child, index}){
     return(
         <div>
             <p>{child.name}</p>
+            <Wishlist />
         </div>
     )
 }
