@@ -1,19 +1,19 @@
 import {wishlists} from './wishlistsServices.js'
 import{userPics} from '../utils/userPics'
-const children = [
+export const children = [
     {
-        child_id: 1, 
+        id: 1, 
         name: "Elizabeth", 
-        url: ('./icons/icon2.svg'), 
+        img_id: 1, 
         wishlist_id: 1,
         created_at: "2021-01-11T01:33:50.019Z", 
         updated_at: "2021-01-11T01:33:50.019Z", 
         user_id: 1
     },
     {
-        child_id: 2, 
+        id: 2, 
         name: "Dylan", 
-        url: ('./icons/icon2.svg'), 
+        img_id: 2, 
         wishlist_id: 2,
         created_at: "2021-01-11T01:33:50.019Z", 
         updated_at: "2021-01-11T01:33:50.019Z", 
@@ -23,13 +23,13 @@ const children = [
 
 // helper methpod to descructure data of children
 function transformChildren(child){
-    const wishlist = wishlists.find(wishlist => wishlist.id === child.wishlist_id)
+    const wishlist = wishlists.find(wishlist => wishlist.id === child.id)
+    const icon = userPics.find(icon=> icon.id === child.img_id )
     return{
-        id: child.child_id,
+        id: child.id,
         name: child.name,
-        // wishlist: child.wishlist_id,
         wishlist: wishlist.name,
-        userPic: child.userPic
+        icon: icon.src
     }
 
 }

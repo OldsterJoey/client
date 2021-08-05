@@ -1,3 +1,4 @@
+import {children} from './childrenServices'
 export const wishlists =[
 
     {
@@ -24,16 +25,17 @@ export const wishlists =[
 
 // helper method to descructure data in wishlist
 function transformWishlist(wishlist){
-    // const child = children.find(child => child.id === wishlist.child_id)
+    const child = children.find(child => child.id === wishlist.id)
+    const wishes = wishlist.wishes
+    console.log(wishes)
+
     return {
-        // mainUser: child.name,
+        child: child.name,
         name: wishlist.name,
         posted: wishlist.created_at,
         updated: wishlist.updated_at,
-        wishes: wishlist.wishes
-    }
-
-}
+        wishes: []
+}}
 export async function getWishlists() {
     console.log(wishlists)
 	return wishlists

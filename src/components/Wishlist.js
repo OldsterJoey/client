@@ -10,18 +10,16 @@ const StyledLink = styled(Link) `
 export default function Wishlist() {
 	const {store} = useGlobalState()
 	const {wishlists} = store
-	console.log(wishlists.wishes)
+	console.log(wishlists)
 	if(!wishlists) return "No saved wishlists. Please, add a new wishlist"
-
-
 
 	return  (
 		<div>
 			{wishlists.map((wishlist,index) => {
 				return (
 					<StyledLink key={wishlist.name} >
-						<Wish index={index} />
-
+						<Wish index={index} 
+						wishes={wishlist.wishes}/>
 					</StyledLink>
 				)
 			})}

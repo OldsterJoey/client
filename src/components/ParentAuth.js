@@ -8,8 +8,6 @@ const StyledLink = styled(Link) `
 `
 
 export default function Admin() {
-
-
 	return  (
 		<div>
 			<StyledLink>

@@ -9,7 +9,10 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 import Child from'./components/Child';
 import {getChildren} from './services/childrenServices';
-// import {getWishlists} from './services/wishlistsServices';
+import NewChild from './components/NewChild'
+import {userPics} from './utils/userPics'
+import Admin from './pages/admin-board'
+import {getWishlists} from './services/wishlistsServices';
 
 
 function App() {
@@ -28,25 +31,25 @@ function App() {
 		.catch((error) => console.log(error))
 	},[])
 
-  // useEffect(() => {
-	// 	getWishlists()
-	// 	.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
-	// 	.catch((error) => console.log(error))
-	// },[])
+  useEffect(() => {
+		getWishlists()
+		.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
+		.catch((error) => console.log(error))
+	},)
 
   return (
     <div>
       <StateContext.Provider 
-      value={{store,dispatch}}
-      >
+        value={{store,dispatch}}>
         <Router>
           <Switch>            
             <Route path="/" component={Home} exact/>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
             <Route path="/main" component={Main}></Route>
-            <Route path="/children/:id" component={Child}></Route>
-
+            <Route exact path="/children/:id" component={Child}></Route>
+            <Route exact path="/children/new" component={NewChild}></Route>
+            <Route exact path="/admin-board" component={Admin}></Route>
 
           </Switch>
         </Router>

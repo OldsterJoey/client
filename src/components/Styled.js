@@ -25,3 +25,7 @@ export const Panel = styled.div `
 	align-items: center;
 	flex-wrap: wrap;
 `
+export const BigTextInput = styled(Input) `
+	height: 100px;
+	width: 50%;
+`

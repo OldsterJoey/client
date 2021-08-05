@@ -2,13 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import Child from './Child'
+import Wishlist from './Wishlist'
 import {useGlobalState} from '../utils/stateContext'
+import { wishlists } from '../services/wishlistsServices'
 // import Wishlist from './Wishlist'
 
-const StyledLink = styled(Link) `
-	text-decoration: none;
-`
-export default function Children() {
+export default function ChildWishlist() {
 	const {store} = useGlobalState()
 	const {children} = store
 	console.log(children)
@@ -18,11 +17,11 @@ export default function Children() {
 
 	return  (
 		<div>
-			{children.map((child,index) => {
+			{wishlists.map((child,index) => {
 				return (
-					<StyledLink key={child.id} to={`/children/${child.id}`}>
-						<Child index={index} child={child}/>
-					</StyledLink>
+					<div key={child.id} >
+						<Wishlist index={index} wishlists={wishlists}/>
+					</div>
 				)
 			})}
 		</div>
