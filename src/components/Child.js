@@ -1,23 +1,23 @@
 import React from 'react'
 import Wishlist from './Wishlist'
 
-export default function Child({child, index}){
+export default function Child({child}){
     if(!child) return null
     console.log(child)
     const wishlist = child.wish_list
-    if(!wishlist) return "No saved wishlists"
-    // console.log(child.wish_list.name)
-    // const wishes = wishlist.wishes
-    // if(!wishes) return "No saved wishes. Please, add a new wish"
-    // console.log(wishes[1])
-    // console.log(wishes[0])
-
+    console.log(wishlist)
+    if(!wishlist) return (
+        <div>
+            {child.name}
+            <p>No wishlist has been saved yet</p>
+            <button>Add a wishlist</button>
+        </div>)
 
 
     return(
         <div>
             <p>{child.name}</p>
-            <Wishlist />
+            <Wishlist key={wishlist.id} child={child} wishlist={child.wish_list}/>
         </div>
     )
 }

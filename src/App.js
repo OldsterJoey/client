@@ -19,7 +19,6 @@ function App() {
 
   const initialState = {
     children: [],
-    // wishes: [],
 		loggedInUser: null,
 		auth: {token: null}
 	}

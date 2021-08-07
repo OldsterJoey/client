@@ -5,7 +5,7 @@ export default function Wish({wish, index}){
     console.log(wish)
     return(
         <div>
-            {wish.name}
+            <li>{wish.name}</li>
         </div>
     )
 }
