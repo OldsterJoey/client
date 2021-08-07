@@ -10,16 +10,16 @@ import Main from './components/Main';
 import Child from'./components/Child';
 import {getChildren} from './services/childrenServices';
 import NewChild from './components/NewChild'
-import {userPics} from './utils/userPics'
+// import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
-import {getWishlists} from './services/wishlistsServices';
+// import {getWishlists} from './services/wishlistsServices';
 
 
 function App() {
 
   const initialState = {
     children: [],
-    wishlists: [],
+    // wishes: [],
 		loggedInUser: null,
 		auth: {token: null}
 	}
@@ -31,11 +31,11 @@ function App() {
 		.catch((error) => console.log(error))
 	},[])
 
-  useEffect(() => {
-		getWishlists()
-		.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
-		.catch((error) => console.log(error))
-	},[])
+  // useEffect(() => {
+	// 	getWishlists()
+	// 	.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
+	// 	.catch((error) => console.log(error))
+	// },[])
 
   return (
     <div>

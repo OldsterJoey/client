@@ -1,25 +1,33 @@
 import {wishlists} from './wishlistsServices.js'
 import{userPics} from '../utils/userPics'
 export const children = [
-    {
-        id: 1, 
-        name: "Elizabeth", 
-        img_id: 1, 
-        wishlist_id: 1,
-        created_at: "2021-01-11T01:33:50.019Z", 
-        updated_at: "2021-01-11T01:33:50.019Z", 
-        user_id: 1
-    },
-    {
-        id: 2, 
-        name: "Dylan", 
-        img_id: 2, 
-        wishlist_id: 2,
-        created_at: "2021-01-11T01:33:50.019Z", 
-        updated_at: "2021-01-11T01:33:50.019Z", 
-        user_id: 1
-    },
-]
+        {
+          "id": 1,
+          "name": "Joey",
+          "created_at": "2021-08-07T04:28:12.187Z",
+          "updated_at": "2021-08-07T04:28:12.187Z",
+          "user_id": 1,
+          "wish_list": {
+            "name": "joeyswishlist",
+            "wishes": [
+              {
+                "name": "I wish for a pink bicycle"
+              },
+              {
+                "name": "I wish for a nintendo"
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "name": "Irina",
+          "created_at": "2021-08-07T04:28:12.193Z",
+          "updated_at": "2021-08-07T04:28:12.193Z",
+          "user_id": 2
+          
+        }
+      ]
 
 // helper methpod to descructure data of children
 function transformChildren(child){

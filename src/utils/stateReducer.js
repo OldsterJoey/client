@@ -19,6 +19,14 @@ export default function stateReducer (state, action) {
 				wishlists: action.data
 			}
 		}
+
+
+        case 'setWishes':{
+			return {
+				...state,
+				wishes: action.data
+			}
+		}
 		case 'setLoggedInUser': {
 			return {
 				...state,
