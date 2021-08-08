@@ -1,7 +1,7 @@
 import React from 'react'
 import Wishlist from './Wishlist'
 
-export default function Child({child}){
+export default function Child({child,index}){
     if(!child) return null
     console.log(child)
     const wishlist = child.wish_list
@@ -16,8 +16,9 @@ export default function Child({child}){
 
     return(
         <div>
+
             <p>{child.name}</p>
-            <Wishlist key={wishlist.id} child={child} wishlist={child.wish_list}/>
+            <Wishlist key={wishlist.id} child={child} index={index} wishlist={wishlist}/>
         </div>
     )
 }

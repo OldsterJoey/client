@@ -1,25 +1,44 @@
-import server from '../config/api';
-export const wishlists =[
-
-    {
-        id: 1, 
-        name: "My wishlist",
-        child_id: 1, 
-        wishes: [
-            {id: 1, name: "Pink Bike"},
-            {id: 2, name: "Doll"},
-            {id: 3, name: "Paw Patrol Skye"}
-        ],
-        created_at: "2021-01-11T01:33:50.019Z", 
-        updated_at: "2021-01-11T01:33:50.019Z" 
-    },
-    {
-        id:2,
-        name: " ",
-        child_id: 2,
-        wishes: [],
-        created_at: " ", 
-        updated_at: " " 
+import {children} from './childrenServices'
+export const wishlists =
+    [
+        {
+          "id": 1,
+          "name": "joeyswishlist",
+          "child_profile_id": 1,
+          "created_at": "2021-08-07T04:28:12.229Z",
+          "updated_at": "2021-08-07T04:28:12.229Z",
+          "wishes": [
+            {
+              "id": 1,
+              "name": "I wish for a pink bicycle",
+              "wish_list_id": 1,
+              "created_at": "2021-08-07T04:28:12.243Z",
+              "updated_at": "2021-08-07T04:28:12.243Z"
+            },
+            {
+              "id": 2,
+              "name": "I wish for a nintendo",
+              "wish_list_id": 1,
+              "created_at": "2021-08-07T04:28:12.248Z",
+              "updated_at": "2021-08-07T04:28:12.248Z"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Wishlist",
+          "child_profile_id": 2,
+          "created_at": "2021-08-08T02:04:33.419Z",
+          "updated_at": "2021-08-08T02:04:33.419Z",
+          "wishes": [
+            {
+              "id": 3,
+              "name": "doll",
+              "wish_list_id": 2,
+              "created_at": "2021-08-08T02:04:48.559Z",
+              "updated_at": "2021-08-08T02:04:48.559Z"
+            }
+        ]
     }
 ]
 

@@ -21,7 +21,7 @@ export default function Main({history}) {
 
             {children.map((child,index) => {
                 return (
-                    <StyledLink key={child.id} to={`/children/${child.id}`}>
+                    <StyledLink key={child.id} to={`/child/${child.id}`}>
                         <ul>{child.name}</ul>
                     </StyledLink>
                 )
