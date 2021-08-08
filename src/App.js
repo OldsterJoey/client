@@ -21,9 +21,8 @@ function App() {
   const initialState = {
     children: [],
     wishlists: [],
-    wishes: [],
-		loggedInUser: null,
-		auth: {token: null}
+		loggedInUser: sessionStorage.getItem("user") || null,
+		auth: {token: sessionStorage.getItem("token") || null}
 	}
 	const [store, dispatch] = useReducer(stateReducer,initialState)
 

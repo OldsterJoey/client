@@ -1,16 +1,17 @@
+import server from '../config/api'
+
 export async function signUp(data) {
-	return {
-		username: "Test",
-		jwt: "token"
-	}
+	const response = server.post('/api/auth/sign_up', data)
+	console.log(response)
+	return response.data
 }
+
 export async function signIn(data) {
-	return {
-		username: "Test",
-		jwt: "token"
-	}
+	const response = server.post('/api/auth/sign_in', data)
+	console.log(response)
+	return response.data
 }
 export async function signOut(data) {
-	// sign in on server
-	return data.username
+	sessionStorage.clear()
+	return "logged out"
 }
