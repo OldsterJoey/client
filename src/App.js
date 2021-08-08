@@ -7,18 +7,21 @@ import Home from './pages/index';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
-import Child from'./components/Child';
+import ChildDetails from'./components/ChildDetails';
 import {getChildren} from './services/childrenServices';
 import NewChild from './components/NewChild'
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
-// import {getWishlists} from './services/wishlistsServices';
+import {getWishlists} from './services/wishlistsServices';
+// import {getWishes} from './services/wishlistServices';
 
 
 function App() {
 
   const initialState = {
     children: [],
+    wishlists: [],
+    wishes: [],
 		loggedInUser: null,
 		auth: {token: null}
 	}
@@ -30,12 +33,17 @@ function App() {
 		.catch((error) => console.log(error))
 	},[])
 
+  useEffect(() => {
+		getWishlists()
+		.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
+		.catch((error) => console.log(error))
+	},[])
+
   // useEffect(() => {
-	// 	getWishlists()
-	// 	.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
+	// 	getWishes()
+	// 	.then((wishes) => dispatch({type: 'setWishes', data: wishes}))
 	// 	.catch((error) => console.log(error))
 	// },[])
-
   return (
     <div>
       <StateContext.Provider 
@@ -46,7 +54,7 @@ function App() {
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
             <Route path="/main" component={Main}></Route>
-            <Route exact path="/children/:id" component={Child}></Route>
+            <Route path="/child/:id" component={ChildDetails}></Route>
             <Route exact path="/children/new" component={NewChild}></Route>
             <Route exact path="/admin-board" component={Admin}></Route>
 
