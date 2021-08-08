@@ -23,8 +23,11 @@ export default function SignUp() {
 	function handleRegister(event) {
 		event.preventDefault()
 		signUp(formState)
-		.then((user) => {
-			dispatch({type: 'setLoggedInUser', data: user.username})
+		.then((data) => {
+			sessionStorage.setItem("token", data.jwt)
+			sessionStorage.setItem("user", data.username)
+
+			dispatch({type: 'setLoggedInUser', data: data.username})
 			history.push('/main')
 		})
 	}

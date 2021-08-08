@@ -29,3 +29,4 @@ export const BigTextInput = styled(Input) `
 	height: 100px;
 	width: 50%;
 `
+
