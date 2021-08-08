@@ -43,28 +43,30 @@ export const wishlists =
 ]
 
 // helper method to descructure data in wishlist
-function transformWishlist(wishlist){
-    const child = children.find(child => child.id === wishlist.id)
-    const wishes = wishlist.wishes
-    console.log(wishes)
+// function transformWishlist(wishlist){
+//     const child = children.find(child => child.id === wishlist.id)
+//     const wishes = wishlist.wishes
+//     console.log(wishes)
 
-    return {
-        child: child.name,
-        name: wishlist.name,
-        posted: wishlist.created_at,
-        updated: wishlist.updated_at,
-        wishes: []
-}}
+//     return {
+//         child: child.name,
+//         name: wishlist.name,
+//         posted: wishlist.created_at,
+//         updated: wishlist.updated_at,
+//         wishes: []
+// }}
 export async function getWishlists() {
-    console.log(wishlists)
-	return wishlists
+    const response = await server.get('/api/wish_lists');
+    console.log(response);
+	return response.data
 	// return Promise.resolve(wishlists)
 }
 
 
 export async function getWishlist(id) {
-	const wishlist = wishlists.find(wishlist => wishlist.id === id)
-	return wishlist ? transformWishlist(wishlist) : null
+    const response = await server.get('/api/wish_lists');
+    console.log(response)
+    return response.data
 }
 
 export async function createWishlist(wishlist) {

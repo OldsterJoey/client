@@ -64,21 +64,24 @@ function transformChildren(child){
 }
 
 export async function getChildren(){
-    return children
+    const response = await server.get('/api/child_profiles');
+    console.log(response);
+    return response.data
 }
 
 export async function getChild(id){
-    const child = children.find(child => child.id === id)
-    return child ? transformChildren(child) : null
+    const response = await server.get('/api/child_profiles/${id}');
+    console.log(response);
+    return response.data
 }
 
-export async function createChild(child){
-    return child
-}
-export async function deleteChild(id){
-    console.log('child has been removed')
-    return id
-}
-export async function updateChild(child){
-    return child
-}
+// export async function createChild(child){
+//     return child
+// }
+// export async function deleteChild(id){
+//     console.log('child has been removed')
+//     return id
+// }
+// export async function updateChild(child){
+//     return child
+// }
