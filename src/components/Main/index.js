@@ -9,8 +9,7 @@ import { signOut } from '../../services/authServices'
 export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
 	const {children, loggedInUser} = store
-	console.log(children)
-
+    console.log(children)
     const StyledLink = styled(Link) `
 	text-decoration: none;
     `

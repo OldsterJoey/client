@@ -13,7 +13,7 @@ import NewChild from './components/NewChild'
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
 import {getWishlists} from './services/wishlistsServices';
-import {getWishes} from './services/wishlistServices';
+import {getWishes} from './services/wishesServices';
 
 
 function App() {

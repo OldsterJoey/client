@@ -3,7 +3,6 @@ import Wishlist from './Wishlist'
 
 export default function Child({child,index}){
     if(!child) return null
-    console.log(child)
     const wishlist = child.wish_list
     console.log(wishlist)
     if(!wishlist) return (
