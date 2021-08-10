@@ -7,6 +7,12 @@ export async function getWishes() {
 	return response.data
 	// return Promise.resolve(wishlists)
 }
+export async function deleteWishes() {
+    const response = await server.delete('/api/wishes');
+    console.log(response);
+	return response.data
+	// return Promise.resolve(wishlists)
+}
 
 export async function getWish(id) {
     const response = await server.get(`/api/wishes/${id}`);

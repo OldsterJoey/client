@@ -51,7 +51,7 @@ export default function stateReducer (state, action) {
 
 	
 		case 'deleteWishlist': {
-			const updatedWishlists = state.wishlsits.filter((wishlist) => {
+			const updatedWishlists = state.wishlists.filter((wishlist) => {
 				return wishlist.id !== parseInt(action.data)
 			})
 			return {

@@ -8,13 +8,13 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import ChildDetails from'./components/ChildDetails';
+import WishlistDetails from './components/WishlistDetails'
 import {getChildren} from './services/childrenServices';
 import NewChild from './components/NewChild'
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
 import {getWishlists} from './services/wishlistsServices';
 import {getWishes} from './services/wishesServices';
-
 
 function App() {
 
@@ -52,6 +52,8 @@ function App() {
             <Route path="/sign_up" component={SignUp}></Route>
             <Route path="/main" component={Main}></Route>
             <Route path="/child/:id" component={ChildDetails}></Route>
+            <Route path="wishlist/update/:id" component={WishlistDetails}></Route>
+
             <Route exact path="/children/new" component={NewChild}></Route>
             <Route exact path="/admin-board" component={Admin}></Route>
 

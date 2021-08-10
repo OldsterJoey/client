@@ -1,15 +1,14 @@
 
 import React,{ useState,useEffect} from 'react'
-import {useParams,useHistory} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {getChild} from '../services/childrenServices'
 
 import {Button, Panel} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteWishlist} from '../services/wishlistsServices'
 import { getWishlist } from '../services/wishlistsServices'
-import {getWish, getWishes} from '../services/wishesServices'
-import Wish from '../components/Wish'
-import Child from '../components/Child'
+import {getWish} from '../services/wishesServices'
+
 
 export default function ChildDetails({history}) {
 	const [child,setChild] = useState(null)
@@ -34,8 +33,6 @@ export default function ChildDetails({history}) {
 		getWish(id)
 		.then((wish) => setWish(wish))
 		.catch((error) => console.log(error))
-
-
 	},[id])
 	console.log(id)
 
@@ -46,7 +43,7 @@ export default function ChildDetails({history}) {
         <div>
             {child.name}
             <p>No wishlist has been saved yet</p>
-            <button>Add a wishlist</button>
+		<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Add Wishlist</Button>
         </div>)
 
 	if (!wish) {
@@ -54,14 +51,16 @@ export default function ChildDetails({history}) {
 	<div>
 		{wishlist.name}
 		<p>No wishes have been saved yet</p>
-		<button>Add wishes</button>
+		<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
 	</div>
 	)}
 	function handleDelete() {
 		deleteWishlist(id)
+		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
 			dispatch({type: 'deleteWishlist', data: id})
-			history.push(`/child/${id}`)
+			history.push(`/child/${id}`) 
+			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
 	}
 	return (
@@ -75,12 +74,10 @@ export default function ChildDetails({history}) {
 
 				)
 			})}
-			{/* {loggedInUser && */}
                 <Panel>
 					<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
 					<Button onClick={handleDelete}>Delete Wishlist</Button>
 				</Panel>
-			{/* } */}
 		</div>
 	)
 }
