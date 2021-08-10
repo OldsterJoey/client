@@ -95,7 +95,7 @@ export default function stateReducer (state, action) {
 			}
 		}
 		case 'updateWish': {
-			const wish = state.wishes.find((wishlist) => wish.id === action.data.id)
+			const wish = state.wishes.find((wish) => wish.id === action.data.id)
 			const theRest = state.wishes.filter((wish) => wish.id !== action.data.id)
 			const updatedWish = Object.assign(wish, action.data)
 			return {
