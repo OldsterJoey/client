@@ -24,6 +24,7 @@ export default function SignUp() {
 		event.preventDefault()
 		signUp(formState)
 		.then((data) => {
+			console.log(data)
 			sessionStorage.setItem("token", data.jwt)
 			sessionStorage.setItem("user", data.username)
 

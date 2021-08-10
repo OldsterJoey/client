@@ -41,7 +41,7 @@ export default function Main({history}) {
             })}
                 <Button onClick={() => history.push('/admin-board') }>Parent</Button>
 				<Button onClick={() => history.push('/children/new') }>Add Child</Button>	
-				<Button onClick={handleSignOut}>Sign Out</Button>	
+				<Button onClick={(handleSignOut) => history.push('/')} >Sign Out</Button>	
 
         </div>
     )

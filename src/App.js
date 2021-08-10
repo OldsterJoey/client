@@ -13,7 +13,7 @@ import NewChild from './components/NewChild'
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
 import {getWishlists} from './services/wishlistsServices';
-// import {getWishes} from './services/wishlistServices';
+import {getWishes} from './services/wishlistServices';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   const initialState = {
     children: [],
     wishlists: [],
+    wishes: [],
 		loggedInUser: sessionStorage.getItem("user") || null,
 		auth: {token: sessionStorage.getItem("token") || null}
 	}
@@ -29,20 +30,17 @@ function App() {
   useEffect(() => {
 		getChildren()
 		.then((children) => dispatch({type: 'setChildren', data: children}))
-		.catch((error) => console.log(error))
-	},[])
+    .catch((error) => console.log(error))
 
-  useEffect(() => {
-		getWishlists()
+    getWishlists()
 		.then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
 		.catch((error) => console.log(error))
+
+    getWishes()
+		.then((wishes) => dispatch({type: 'setWishes', data: wishes}))
+		.catch((error) => console.log(error))
 	},[])
 
-  // useEffect(() => {
-	// 	getWishes()
-	// 	.then((wishes) => dispatch({type: 'setWishes', data: wishes}))
-	// 	.catch((error) => console.log(error))
-	// },[])
   return (
     <div>
       <StateContext.Provider 

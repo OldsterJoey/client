@@ -2,19 +2,16 @@ import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
 import {createChild, getChild, updateChild} from '../services/childrenServices'
-import{userPics} from '../utils/userPics'
 import {useGlobalState} from '../utils/stateContext'
 
 export default function NewChild() {
 	const initialFormState = {
-        id: "",
 		name:  "",
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {dispatch, store} = useGlobalState()
-	const {children} = store;
+	const {dispatch} = useGlobalState()
     console.log()
 
 	useEffect(() => {
