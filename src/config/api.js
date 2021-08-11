@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const server = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://wishfully-server.herokuapp.com'
 })
 
 server.interceptors.request.use((req) => {
