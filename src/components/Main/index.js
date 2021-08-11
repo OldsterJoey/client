@@ -4,7 +4,7 @@ import {useGlobalState} from '../../utils/stateContext'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import { signOut } from '../../services/authServices'
-
+import Navbar from '../../components/Navbar'
 
 export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
@@ -26,6 +26,7 @@ export default function Main({history}) {
     
     return (
         <div>
+            <Navbar />
             <h1>Welcome to Wishfully</h1>
             <h2>Please, select who is using the app today?</h2>
 
