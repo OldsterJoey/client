@@ -59,7 +59,7 @@ export default function WishlistDetails() {
 	return (
 		<>
 		<Panel>
-			<Label>Name:</Label>
+			<Label>Wishlist Name:</Label>
 			<Input type="text" name='wishlistName' value={formState.name} onChange={handleChange}></Input>
 			<Label>Wishes:</Label>
 			<li>

@@ -26,8 +26,6 @@ export default function Main({history}) {
     
     return (
         <div>
-        <Span>{loggedInUser}</Span>
-
             <h1>Welcome to Wishfully</h1>
             <h2>Please, select who is using the app today?</h2>
 
@@ -39,9 +37,8 @@ export default function Main({history}) {
                 )
             })}
                 <Button onClick={() => history.push('/admin-board') }>Parent</Button>
-				<Button onClick={() => history.push('/children/new') }>Add Child</Button>	
+				<Button onClick={() => history.push('/children/new') }>Add Child</Button>
 				<Button onClick={(handleSignOut) => history.push('/')} >Sign Out</Button>	
-
         </div>
     )
 }
