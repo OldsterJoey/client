@@ -27,7 +27,7 @@ export default function Main({history}) {
     return (
         <div>
             {/* <Navbar /> */}
-            <h1>Welcome to Wishfully</h1>
+            <h1>Welcome to Wishfully, {loggedInUser}</h1>
             <h2>Please, select who is using the app today?</h2>
 
             {children.map((child,index) => {

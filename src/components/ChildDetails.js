@@ -25,6 +25,7 @@ export default function ChildDetails({history}) {
 		getChild(id)
 		.then((child) => setChild(child))
 		.catch((error) => console.log(error))
+		
 		getWishlist(id)
 		.then((wishlist) => setWishlist(wishlist))
 		.then(console.log(wishlist))

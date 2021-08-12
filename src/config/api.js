@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const server = axios.create({
     baseURL: 'https://wishfully-server.herokuapp.com'
+
 })
 
 server.interceptors.request.use((req) => {

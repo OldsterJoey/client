@@ -5,7 +5,6 @@ import Child from './Child'
 import {useGlobalState} from '../utils/stateContext'
 import {Button} from './Styled'
 
-
 export default function Children(history) {
 	const {store} = useGlobalState()
 	const {children} = store
@@ -17,22 +16,23 @@ export default function Children(history) {
 			<Button onClick={() => history.push('/children/new') }>Add Child</Button>	
         </div>)
 
-	
 // 	const StyledLink = styled(Link) `
 // 	text-decoration: none;
 // `
 
 	return  (
+		<>
 		<div>
 			{children.map((child,index) => {
 				return (
 					// <StyledLink key={child.id} to={`/children/${child.id}`}>
 						<Child key={child.id} index={index} child={child} wishlist={child.wish_list}>
 							{child.name}
-						</Child>						
+						</Child>
 					// </StyledLink>
 				)
 			})}
 		</div>
+		</>
 	)
 }
