@@ -32,7 +32,7 @@ export async function deleteWish(id) {
     return response.data
 }
 
-export async function updateWishlist(data) {
+export async function updateWish(data) {
 	const response = await server.put(`/api/wishes/${data.id}`, {name: data.name});
     return response.data
 }

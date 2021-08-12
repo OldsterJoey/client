@@ -19,23 +19,26 @@ export default function ChildDetails() {
 	let history = useHistory()
 	const {store,dispatch} = useGlobalState()
     const {wishes} = store
-	console.log(wishes)
 
     useEffect(() => {
 		getChild(id)
 		.then((child) => setChild(child))
 		.catch((error) => console.log(error))
 
-		getWishlist(id)
-		.then((wishlist) => setWishlist(wishlist))
-		.then(console.log(wishlist))
-		.catch((error) => console.log(error))
-
+		
 		getWish(id)
 		.then((wish) => setWish(wish))
 		.catch((error) => console.log(error))
 	},[id])
 	console.log(id)
+
+	useEffect(() => {
+		getWishlist(id)
+		.then((wishlist) => setWishlist(wishlist))
+		.then(console.log(wishlist))
+		.catch((error) => console.log(error))
+
+	},[id])
 
     if(!child) return null
 
@@ -60,7 +63,7 @@ export default function ChildDetails() {
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
 			dispatch({type: 'deleteWishlist', data: id})
-			history.push(`/child/${id}`) 
+			history.push(`/main`) 
 			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
 	}

@@ -20,7 +20,7 @@ export default function Main({history}) {
         .then(() => {
             dispatch({type: 'setLoggedInUser', data: null })
             dispatch({type: 'setToken', data: null })
-
+			history.push(`/`) 
         })
     }
     
