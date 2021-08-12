@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const server = axios.create({
-    baseURL: 'https://wishfully-server.herokuapp.com'
+    baseURL: process.env.API_URL
 
 })
 
