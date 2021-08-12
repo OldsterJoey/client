@@ -7,6 +7,7 @@ import Home from './pages/index';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
+// import Navbar from './componenets/Navbar';
 import ChildDetails from'./components/ChildDetails';
 import WishlistDetails from './components/WishlistDetails'
 import {getChildren} from './services/childrenServices';
@@ -46,6 +47,7 @@ function App() {
       <StateContext.Provider 
         value={{store,dispatch}}>
         <Router>
+          {/* <Navbar /> */}
           <Switch>            
             <Route path="/" component={Home} exact/>
             <Route exact path="/main" component={Main}></Route>

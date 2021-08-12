@@ -126,3 +126,26 @@ export const Wrapper = styled.div`
 
 
 `
+
+
+export const AboutButton = styled.button`
+    background: #fff;
+    padding: 16px 0;
+    border-color: #4264DD;
+    border-radius: 16px;
+    color: #4264DD;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 60px;
+	width: 120px;
+
+    @media screen and (max-width: 280px) {
+        max-width:80px;
+    }
+    
+    &:hover {
+        transition: all 0.2 ease-in-out;
+        background: #4264DD;
+        color: #fff;
+    }
+`;

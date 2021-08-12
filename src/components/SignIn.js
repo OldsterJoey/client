@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import {Button, Label, Input} from './Styled'
+// import {Button, Label, Input} from './Styled'
 import {signIn} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
-
+import { Container, FormWrap, FormContent, Form, FormHeading, FormLabel, FormInput, FormButton } from './Styled'
 
 export default function SignIn({history}) {
 	const initialFormState = {
@@ -32,14 +32,20 @@ export default function SignIn({history}) {
 
 	}
 	return (
-		<form >
-			<Label>Email:</Label>
-			<Input type='email' name='email' value={formState.username} onChange={handleChange}></Input>
-			<Label>Password:</Label>
-			<Input type='password' name='password' value={formState.password} onChange={handleChange}></Input>
-			<Button onClick={handleSubmit}>Log In</Button>
-            <Button onClick={() => history.push('/sign_up')}>Sign Up</Button>
-			<p>Password Recovery</p>
-		</form>
+		<Container id='signIn'>
+			<FormWrap>
+				<FormContent>
+					<Form className='registration' >
+						<FormHeading>Let's first check if you have an account already. Please, use your email and password to log in. If you haven't registered yet, you can Sign Up.</FormHeading>
+						<FormLabel>Email:</FormLabel>
+						<FormInput type='email' name='email' value={formState.username} onChange={handleChange}></FormInput>
+						<FormLabel>Password:</FormLabel>
+						<FormInput type='password' name='password' value={formState.password} onChange={handleChange}></FormInput>
+						<FormButton onClick={handleSubmit}>Log In</FormButton>
+						<FormButton onClick={() => history.push('/sign_up')}>Sign Up</FormButton>
+					</Form>
+				</FormContent>
+			</FormWrap>
+		</Container>
 	)
 }
