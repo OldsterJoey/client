@@ -1,6 +1,6 @@
 
 import React,{ useState,useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {getChild} from '../services/childrenServices'
 
 import {Button, Panel} from './Styled'
@@ -10,13 +10,13 @@ import { getWishlist } from '../services/wishlistsServices'
 import {getWish} from '../services/wishesServices'
 
 
-export default function ChildDetails({history}) {
+export default function ChildDetails() {
 	const [child,setChild] = useState(null)
 	const [wishlist, setWishlist] = useState(null)
 	const [wish, setWish] = useState(null)
 
 	const {id} = useParams()
-	// let history = useHistory()
+	let history = useHistory()
 	const {store,dispatch} = useGlobalState()
     const {wishes} = store
 	console.log(wishes)
@@ -25,7 +25,7 @@ export default function ChildDetails({history}) {
 		getChild(id)
 		.then((child) => setChild(child))
 		.catch((error) => console.log(error))
-		
+
 		getWishlist(id)
 		.then((wishlist) => setWishlist(wishlist))
 		.then(console.log(wishlist))
