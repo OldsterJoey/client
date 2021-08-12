@@ -39,19 +39,18 @@ export default function Child({child,index, id}){
         <>
         <div>
 
-            {loggedInUser === child.username && 
-            <Panel>
 
             <p>{child.name}</p>	
-                            <Wishlist key={wishlist.id} child={child} index={index} wishlist={wishlist}/>
+            <Wishlist key={wishlist.id} child={child} index={index} wishlist={wishlist}/>
 
-                <Button value={child.id} onClick={handleDelete}>Delete Child name</Button>
+            {loggedInUser === child.name && 
+            <Panel>
+                <Button value={child.id} onClick={() => history.push(`/child/update/${id}`)}>Update Child Name</Button>
+
+                <Button onClick={handleDelete}>Delete Child name</Button>
             </Panel>
-
-
             }
 
-            {/* <Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button> */}
 
             
         </div>

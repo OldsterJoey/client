@@ -48,15 +48,13 @@ function App() {
         <Router>
           <Switch>            
             <Route path="/" component={Home} exact/>
+            <Route exact path="/main" component={Main}></Route>
+            <Route exact path="/child/:id" component={ChildDetails}></Route>
+            <Route exact path="/children/new" component={NewChild}></Route>
+            <Route exact path="/wishlist/update/:id" component={WishlistDetails}></Route>
+            <Route exact path="/admin-board" component={Admin}></Route>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
-            <Route path="/main" component={Main}></Route>
-            <Route path="/child/:id" component={ChildDetails}></Route>
-            <Route path="wishlist/update/:id" component={WishlistDetails}></Route>
-
-            <Route exact path="/children/new" component={NewChild}></Route>
-            <Route exact path="/admin-board" component={Admin}></Route>
-
           </Switch>
         </Router>
       </StateContext.Provider>
