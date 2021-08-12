@@ -31,6 +31,7 @@ export const BigTextInput = styled(Input) `
 `
 
 
+
 // Styling for log in and sign up
 
 export const Container = styled.div`

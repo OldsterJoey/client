@@ -1,8 +1,8 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper } from './AboutElements'
-import {Button} from '../Styled'
+import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper, AboutButton } from './AboutElements'
+import {FormButton} from '../Styled'
 
 
 const AboutSection = () => {
@@ -27,7 +27,7 @@ const AboutSection = () => {
                 </Wrapper>
                 <AboutText>Our app will find the closest matching present from the online shop - just save the shop link and price to your budget shopping list!</AboutText>
                 <AboutBtnWrapper>
-                    <Button onClick={() => history.push('/sign_in')}>Sign In</Button>
+                    <AboutButton onClick={() => history.push('/sign_in')}>Let's Go!</AboutButton>
                 </AboutBtnWrapper>
             </AboutContent> 
 
