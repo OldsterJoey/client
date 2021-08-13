@@ -12,7 +12,6 @@ export default function NewChild() {
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch} = useGlobalState()
-    console.log()
 
 	useEffect(() => {
 		if(id) {
@@ -48,7 +47,7 @@ export default function NewChild() {
 			createWish({...formState})
 			.then((wish) => {
 				dispatch({type: 'createWish', data: {wish, ...formState}})
-				history.push('/main') //review
+				history.push(`/wish/${id}`) //review
 			})
 			.catch((error) => console.log(error))
 		}

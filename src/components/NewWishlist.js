@@ -12,22 +12,19 @@ export default function NewWishlist() {
 	let history = useHistory()
 	let {id} = useParams()
 	const {store, dispatch} = useGlobalState()
-    const {wishes} = store
-    console.log(wishes)
 
 	useEffect(() => {
 		if(id) {
-			getWishlist(id, wishes)
+			getWishlist(id)
 			.then((wishlist) => {
 				console.log(wishlist)
 				setFormState({
 					wishlist_id: wishlist.id,
 					name: wishlist.name, 
-					wishes: wishlist.wishes
 				})
 			})
 		}
-	},[id, wishes])
+	},[id])
 
 
 	function handleChange(event) {
@@ -49,7 +46,7 @@ export default function NewWishlist() {
 		else {
 			createWishlist({...formState})
 			.then((wishlist) => {
-				dispatch({type: 'createWishlist', data: wishlist})
+				dispatch({type: 'createWishlist', data: {wishlist, ...formState}})
 				history.push(`/wishlist/${id}`)
 			})
 			.catch((error) => console.log(error))
@@ -57,24 +54,10 @@ export default function NewWishlist() {
 	}
 
 	return (
-		<div>
 			<div>
 			<Label>Wishlist:</Label>
-				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-	
+				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>	
+				<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
 			</div>
-		
-			<Label>Wishes:</Label>
-			{wishes.map((wish, index) => {
-				return(
-					<ol>
-						<BigTextInput key={index} type='text' name='name' value={wish.name} onChange={handleChange}></BigTextInput>
-					</ol>
-				)
-				// return <li key={subIndex}>{subWishes.name}</li>
-			})}
-
-			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
-		</div>
 	)
 }

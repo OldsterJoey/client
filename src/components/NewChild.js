@@ -12,7 +12,6 @@ export default function NewChild() {
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch} = useGlobalState()
-    console.log()
 
 	useEffect(() => {
 		if(id) {
