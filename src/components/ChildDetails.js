@@ -62,7 +62,7 @@ export default function ChildDetails() {
 				)
 			})}
                 <Panel>
-					<Button onClick={() => history.push(`/wishlist/new`)}>Update Wishlist</Button>
+					<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
 					<Button onClick={handleDelete}>Delete Wishlist</Button>
 				</Panel>
 		</div>
