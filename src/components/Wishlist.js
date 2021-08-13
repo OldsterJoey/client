@@ -24,3 +24,5 @@ export default function Wishlist({wishlist,child}) {
 		</>
 	)
 }
+
+//review
