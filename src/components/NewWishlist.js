@@ -68,6 +68,8 @@ export default function NewWishlist() {
 			createWishlist({...formState})
 			.then((wishlist) => {
 				dispatch({type: 'createWishlist', data: wishlist})
+                dispatch({type: 'createWish', data: wishlist.wishes})
+
 				history.push(`/wishlist/${id}`)
 			})
 			.catch((error) => console.log(error))
