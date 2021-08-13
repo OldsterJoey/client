@@ -43,7 +43,7 @@ export default function Child({child,index, id}){
             <p>{child.name}</p>	
             <Wishlist key={wishlist.id} child={child} index={index} wishlist={wishlist}/>
 
-            {loggedInUser === child.name && 
+            {loggedInUser === child.user_id && 
             <Panel>
                 <Button value={child.id} onClick={() => history.push(`/child/update/${id}`)}>Update Child Name</Button>
 

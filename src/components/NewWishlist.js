@@ -7,7 +7,7 @@ import {getWish, createWish, updateWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
 import { getWishes } from '../services/wishesServices'
 
-export default function WishlistDetails() {
+export default function NewWishlist() {
 	const initialFormState = {
 		name:  "",
 		wishes: [
@@ -40,7 +40,7 @@ export default function WishlistDetails() {
 				setFormState({
 					wishlist_id: wishlist.id,
 					name: wishlist.name, 
-					wishes: wishlist.wishes 
+					wishes: wishlist.wishes
 				})
 			})
 		}
