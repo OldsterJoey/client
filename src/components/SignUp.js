@@ -32,6 +32,8 @@ export default function SignUp() {
 			dispatch({type: 'setLoggedInUser', data: data.username})
 			history.push('/main')
 		})
+		.catch((error) => console.log(error))
+
 	}
 	return (
 		<Container id='signUp'>
