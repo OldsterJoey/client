@@ -2,7 +2,6 @@ import React from 'react'
 import {useHistory} from 'react-router-dom'
 
 import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper, AboutButton } from './AboutElements'
-import {FormButton} from '../Styled'
 
 
 const AboutSection = () => {

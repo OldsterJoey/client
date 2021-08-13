@@ -1,18 +1,14 @@
 import React from 'react'
-import {Button, Span} from '../Styled'
+import {Button} from '../Styled'
 import {useGlobalState} from '../../utils/stateContext'
-import {Link} from 'react-router-dom'
-import styled from 'styled-components'
 import { signOut } from '../../services/authServices'
+import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, Wrapper} from './MainElements'
 // import Navbar from '../../components/Navbar'
 
 export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
 	const {children, loggedInUser} = store
     console.log(children)
-    const StyledLink = styled(Link) `
-	text-decoration: none;
-    `
 
     function handleSignOut(event){
         event.preventDefault()
@@ -25,21 +21,31 @@ export default function Main({history}) {
     }
     
     return (
-        <div>
-            {/* <Navbar /> */}
-            <h1>Welcome to Wishfully, {loggedInUser}</h1>
-            <h2>Please, select who is using the app today?</h2>
+            <MainContainer>
+                <MainContent>
+                    {/* <Navbar /> */}
+                        <MainH1>Welcome to Wishfully, {loggedInUser}</MainH1>
+                        <MainH2>Please, select who is using the app today?</MainH2>
 
-            {children.map((child,index) => {
-                return (
-                    <StyledLink key={child.id} to={`/child/${child.id}`}>
-                        <ul>{child.name}</ul>
-                    </StyledLink>
-                )
-            })}
-                <Button onClick={() => history.push('/admin-board') }>Parent</Button>
-				<Button onClick={() => history.push('/children/new') }>Add Child</Button>
-				<Button onClick={(handleSignOut) => history.push('/')} >Sign Out</Button>	
-        </div>
+                        <MainWrapper>
+                            {children.map((child,index) => {
+                            return (
+                                <Wrapper>
+                                    <StyledButton key={child.id} onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
+                                </Wrapper>
+
+                                    )
+                                })}
+                            <Wrapper>
+                                <StyledButton onClick={() => history.push(`/admin-board`)}>Parent</StyledButton>
+
+                            </Wrapper>
+                        </MainWrapper>
+
+                        {/* these buttons need to go to Navbar */}
+                        <Button onClick={() => history.push('/children/new') }>Add Child</Button>
+                        <Button onClick={(handleSignOut) => history.push('/')} >Sign Out</Button>	
+                </MainContent>
+            </MainContainer>
     )
 }
