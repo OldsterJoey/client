@@ -2,10 +2,7 @@ import React  from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Panel,Button} from './Styled'
 import {deleteWishlist} from '../services/wishlistsServices'
-// import {getWish, createWish, updateWish} from '../services/wishesServices'
-
 import {useGlobalState} from '../utils/stateContext'
-// import { getWishes } from '../services/wishesServices'
 
 export default function WishlistDetails() {
 	const {store,dispatch} = useGlobalState()
