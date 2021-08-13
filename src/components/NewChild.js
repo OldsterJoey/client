@@ -47,7 +47,7 @@ export default function NewChild() {
 		else {
 			createChild({...formState})
 			.then((child) => {
-				dispatch({type: 'createChild', data: child})
+				dispatch({type: 'createChild', data: {child, ...formState}})
 				history.push('/main')
 			})
 			.catch((error) => console.log(error))

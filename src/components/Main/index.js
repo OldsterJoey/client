@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useParams} from 'react'
 import {Button} from '../Styled'
 import {useGlobalState} from '../../utils/stateContext'
 import {getChildren} from '../../services/childrenServices';
@@ -11,9 +11,9 @@ import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, W
 
 export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
-	const {children, loggedInUser} = store
-    console.log(children)
-
+    const {children, loggedInUser} = store
+	// const {id} = useParams()
+	console.log(children)
 
     useEffect(() => {
         getChildren()
@@ -45,9 +45,13 @@ export default function Main({history}) {
                 <MainContent>
                     {/* <Navbar /> */}
                         <MainH1>Welcome to Wishfully, {loggedInUser}</MainH1>
+                        {/* <p>{child.user_id}</p> */}
                         <MainH2>Please, select who is using the app today?</MainH2>
 
+                        {/* {loggedInUser === child.user_id &&  */}
+
                         <MainWrapper>
+                            
                             {children.map((child,index) => {
                             return (
                                 <Wrapper>
