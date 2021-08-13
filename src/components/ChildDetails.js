@@ -20,7 +20,7 @@ export default function ChildDetails() {
 	let history = useHistory()
 
 	const wishlist = child && child.wish_list
-
+	console.log(wishlist)
 	const wishes = wishlist && wishlist.wishes 
 
     if(!child) return null
@@ -33,14 +33,14 @@ export default function ChildDetails() {
 		<Button onClick={() => history.push(`/wishlist/new/`)}>Add Wishlist</Button>
         </div>)
 
-	if (!wishes) {
-	return (
-	<div>
-		{wishlist.name}
-		<p>No wishes have been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
-	</div>
-	)}
+	if (!wishes) return null
+	// return (
+	// <div>
+	// 	{wishlist.name}
+	// 	<p>No wishes have been saved yet</p>
+	// 	<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
+	// </div>
+	// )
 	function handleDelete() {
 		deleteWishlist(id)
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?

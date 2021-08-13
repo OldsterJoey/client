@@ -13,6 +13,7 @@ import WishlistDetails from './components/WishlistDetails'
 import NewChild from './components/NewChild'
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board'
+import NewWishlist from './components/NewWishlist';
 
 
 function App() {
@@ -38,8 +39,9 @@ function App() {
             <Route exact path="/child/:id" component={ChildDetails}></Route>
             <Route exact path="/children/new" component={NewChild}></Route>
             <Route exact path="/child/update/:id" component={NewChild}></Route>
-            <Route exact path="/wishlist/new" component={WishlistDetails}></Route>
-            <Route exact path="/wishlist/update/:id" component={WishlistDetails}></Route>
+            <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
+            <Route exact path="/wishlist/new" component={NewWishlist}></Route>
+            <Route exact path="/wishlist/update/:id" component={NewWishlist}></Route>
             <Route exact path="/admin-board" component={Admin}></Route>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>

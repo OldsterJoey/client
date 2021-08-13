@@ -13,7 +13,6 @@ export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
     const {children, loggedInUser} = store
 	// const {id} = useParams()
-	console.log(children)
 
     useEffect(() => {
         getChildren()
@@ -54,10 +53,9 @@ export default function Main({history}) {
                             
                             {children.map((child,index) => {
                             return (
-                                <Wrapper>
-                                    <StyledButton index={index} key={child.id} onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
+                                <Wrapper index={index} key={child.id} >
+                                    <StyledButton onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
                                 </Wrapper>
-
                                     )
                                 })}
                             <Wrapper>

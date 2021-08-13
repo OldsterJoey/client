@@ -16,9 +16,6 @@ export default function Children(history) {
 			<Button onClick={() => history.push('/children/new') }>Add Child</Button>	
         </div>)
 
-// 	const StyledLink = styled(Link) `
-// 	text-decoration: none;
-// `
 
 	return  (
 		<>

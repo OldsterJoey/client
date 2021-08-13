@@ -1,98 +1,56 @@
-import React, {useState, useEffect} from 'react'
+import React  from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
-import {getWishlist,createWishlist, updateWishlist} from '../services/wishlistsServices'
-import {getWish, createWish, updateWish} from '../services/wishesServices'
+import {Panel,Button} from './Styled'
+import {deleteWishlist} from '../services/wishlistsServices'
+// import {getWish, createWish, updateWish} from '../services/wishesServices'
 
 import {useGlobalState} from '../utils/stateContext'
-import { getWishes } from '../services/wishesServices'
+// import { getWishes } from '../services/wishesServices'
 
 export default function WishlistDetails() {
-	const initialFormState = {
-		name:  "",
-		wishes: [
-			{
-				id: '',
-				name: '',
-			},
-			{
-				id:'',
-				name: '',
-			},
-			{
-				id:'',
-				name: ''
-			}
-		]
-	}
-	const [formState,setFormState] = useState(initialFormState)
+	const {store,dispatch} = useGlobalState()
+    const {wishlists} = store
+	const {id} = useParams()
+	console.log(wishlists)
+
+	const wishlist = wishlists.find(wishlist => wishlist.id === parseInt(id))
+	console.log(wishlist)
 	let history = useHistory()
-	let {id} = useParams()
-	const {store, dispatch} = useGlobalState()
-    const {wishes} = store
-    console.log(wishes)
 
-	useEffect(() => {
-		if(id) {
-			getWishlist(id, wishes)
-			.then((wishlist) => {
-				console.log(wishlist)
-				setFormState({
-					wishlist_id: wishlist.id,
-					name: wishlist.name, 
-					wishes: wishlist.wishes 
-				})
-			})
-		}
-	},[id, wishes])
+	const wishes = wishlist && wishlist.wishes 
 
-
-	function handleChange(event) {
-		setFormState({
-			...formState,
-			[event.target.name]: event.target.value
+	if (!wishes) {
+	return (
+	<div>
+		{wishlist.name}
+		<p>No wishes have been saved yet</p>
+		<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
+	</div>
+	)}
+	function handleDelete() {
+		deleteWishlist(id)
+		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
+		.then(() => {
+			dispatch({type: 'deleteWishlist', data: id})
+			history.push(`/main`) 
+			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
-		
-	}
-	function handleClick(event) {
-		event.preventDefault()
-		if(id) {
-			updateWishlist( {id: id, ...formState})
-			.then(() => {
-				dispatch({type: 'updateWishlist', data: {id: id, ...formState}})
-				dispatch({type: 'updateWish', data: {id: id, ...setFormState(wishes)}})
-				history.push(`/wishlist/${id}`)
-			})
-		}
-		else {
-			createWishlist({...formState})
-			.then((wishlist) => {
-				dispatch({type: 'createWishlist', data: wishlist})
-				history.push(`/wishlist/${id}`)
-			})
-			.catch((error) => console.log(error))
-		}
 	}
 
 	return (
 		<div>
-			<div>
-			<Label>Wishlist:</Label>
-				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-	
-			</div>
-		
-			<Label>Wishes:</Label>
-			{wishes.map((wish, index) => {
+			<p>Wishlist: {wishlist.name}</p>
+			{wishes.map((wish) => {
 				return(
-					<ol>
-						<BigTextInput key={index} type='text' name='name' value={wish.name} onChange={handleChange}></BigTextInput>
-					</ol>
+					<li>{wish.name}</li>
+
 				)
-				// return <li key={subIndex}>{subWishes.name}</li>
 			})}
 
-			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+			<Panel>
+					<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
+					<Button onClick={handleDelete}>Delete Wishlist</Button>
+				</Panel>		
 		</div>
 	)
 }
