@@ -5,40 +5,23 @@ import {getChild} from '../services/childrenServices'
 
 import {Button, Panel} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
-import {deleteWishlist} from '../services/wishlistsServices'
-import { getWishlist } from '../services/wishlistsServices'
+import {deleteWishlist, getWishlist} from '../services/wishlistsServices'
 import {getWish} from '../services/wishesServices'
 
 
 export default function ChildDetails() {
-	const [child,setChild] = useState(null)
-	const [wishlist, setWishlist] = useState(null)
-	const [wish, setWish] = useState(null)
-
-	const {id} = useParams()
-	let history = useHistory()
 	const {store,dispatch} = useGlobalState()
-    const {wishes} = store
+    const {children} = store
+	const {id} = useParams()
+	console.log(children)
 
-    useEffect(() => {
-		getChild(id)
-		.then((child) => setChild(child))
-		.catch((error) => console.log(error))
+	const child = children.find(child => child.id === parseInt(id))
+	console.log(child)
+	let history = useHistory()
 
-		
-		getWish(id)
-		.then((wish) => setWish(wish))
-		.catch((error) => console.log(error))
-	},[id])
-	console.log(id)
+	const wishlist = child && child.wish_list
 
-	useEffect(() => {
-		getWishlist(id)
-		.then((wishlist) => setWishlist(wishlist))
-		.then(console.log(wishlist))
-		.catch((error) => console.log(error))
-
-	},[id])
+	const wishes = wishlist && wishlist.wishes 
 
     if(!child) return null
 
@@ -47,15 +30,15 @@ export default function ChildDetails() {
         <div>
             {child.name}
             <p>No wishlist has been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Add Wishlist</Button>
+		<Button onClick={() => history.push(`/wishlist/new/`)}>Add Wishlist</Button>
         </div>)
 
-	if (!wish) {
+	if (!wishes) {
 	return (
 	<div>
 		{wishlist.name}
 		<p>No wishes have been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
+		<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
 	</div>
 	)}
 	function handleDelete() {

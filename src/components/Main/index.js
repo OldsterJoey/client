@@ -31,7 +31,7 @@ export default function Main({history}) {
                             {children.map((child,index) => {
                             return (
                                 <Wrapper>
-                                    <StyledButton key={child.id} onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
+                                    <StyledButton index={index} key={child.id} onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
                                 </Wrapper>
 
                                     )
