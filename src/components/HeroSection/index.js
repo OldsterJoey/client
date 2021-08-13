@@ -3,7 +3,7 @@ import Particle from '../Particle'
 import {ParticleStyle, HeroContainer,  HeroContent, HeroImg, HeroHeading} from './HeroElements'
 import Image from '../../components/images/logo.svg'
 import UseAnimations from 'react-useanimations';
-
+import SmallNavbar from '../Navbar/SmallNavbar'
 
 const HeroSection = () => {
     const[hover, setHover] = useState(false)
@@ -13,6 +13,7 @@ const HeroSection = () => {
     }
     return (
         <>
+        <SmallNavbar />
         <HeroContainer>
             <ParticleStyle>
                 <Particle />
