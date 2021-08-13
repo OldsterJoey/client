@@ -1,13 +1,10 @@
-
 import React,{ useState,useEffect} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import {getChild} from '../services/childrenServices'
-
 import {Button, Panel} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteWishlist, getWishlist} from '../services/wishlistsServices'
 import {getWish} from '../services/wishesServices'
-
 
 export default function ChildDetails() {
 	const {store,dispatch} = useGlobalState()

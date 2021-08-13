@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
-import {createChild, getChild, updateChild} from '../services/childrenServices'
 import {useGlobalState} from '../utils/stateContext'
+import {getWish, createWish, updateWish} from '../services/wishesServices'
 
 export default function NewChild() {
 	const initialFormState = {
@@ -15,12 +15,12 @@ export default function NewChild() {
 
 	useEffect(() => {
 		if(id) {
-			getChild(id)
-			.then((child) => {
-				console.log(child)
+			getWish(id)
+			.then((wish) => {
+				console.log(wish)
 				setFormState({
-					child_id: child.id,
-					name: child.name 
+					wish_id: wish.id,
+					name: wish.name 
 				})
 			})
 		}
@@ -37,24 +37,24 @@ export default function NewChild() {
 	function handleClick(event) {
 		event.preventDefault()
 		if(id) {
-			updateChild( {id: id, ...formState})
+			updateWish( {id: id, ...formState})
 			.then(() => {
-				dispatch({type: 'updateChild', data: {id: id, ...formState}})
-				history.push(`/child/${id}`)
+				dispatch({type: 'updateWish', data: {id: id, ...formState}})
+				history.push(`/wish/${id}`) //review
 			})
 		}
 		else {
-			createChild({...formState})
-			.then((child) => {
-				dispatch({type: 'createChild', data: {child, ...formState}})
-				history.push('/main')
+			createWish({...formState})
+			.then((wish) => {
+				dispatch({type: 'createWish', data: {wish, ...formState}})
+				history.push(`/wish/${id}`) //review
 			})
 			.catch((error) => console.log(error))
 		}
 	}
 	return (
 		<div>
-			<Label>Child:</Label>
+			<Label>Wish:</Label>
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
 		</div>
