@@ -2,28 +2,11 @@ import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
 import {getWishlist,createWishlist, updateWishlist} from '../services/wishlistsServices'
-import {getWish, createWish, updateWish} from '../services/wishesServices'
-
 import {useGlobalState} from '../utils/stateContext'
-import { getWishes } from '../services/wishesServices'
 
 export default function NewWishlist() {
 	const initialFormState = {
 		name:  "",
-		wishes: [
-			{
-				id: '',
-				name: '',
-			},
-			{
-				id:'',
-				name: '',
-			},
-			{
-				id:'',
-				name: ''
-			}
-		]
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
@@ -60,7 +43,6 @@ export default function NewWishlist() {
 			updateWishlist( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWishlist', data: {id: id, ...formState}})
-				dispatch({type: 'updateWish', data: {id: id, ...setFormState(wishes)}})
 				history.push(`/wishlist/${id}`)
 			})
 		}
@@ -68,8 +50,6 @@ export default function NewWishlist() {
 			createWishlist({...formState})
 			.then((wishlist) => {
 				dispatch({type: 'createWishlist', data: wishlist})
-                dispatch({type: 'createWish', data: wishlist.wishes})
-
 				history.push(`/wishlist/${id}`)
 			})
 			.catch((error) => console.log(error))
