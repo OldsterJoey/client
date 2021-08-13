@@ -8,12 +8,9 @@ export const Nav = styled.nav`
     height: 80px;
     display: flex;
     align-items: center;
-    margin-top: -80px;
     justify-content: center;
-    background:rgba(68, 99, 123, 0.76);
-    // opacity: rgba(68, 99, 123, 0.92);
+    background: #54376E;
     font-size: 1rem;
-    position: sticky;
     top: 0;
     z-index: 10;
     width: 100vw;
@@ -47,7 +44,7 @@ export const NavLogo = styled(LinkRouter)`
     `
 
 
-export const NavMenu = styled.ul`
+export const NavMenu = styled.div`
     display: flex;
     align-items: center;
     list-style: none;
@@ -56,7 +53,7 @@ export const NavMenu = styled.ul`
     @media screen and (max-width: 768px) {
         display: none;}
 `
-export const NavItem = styled.li`
+export const NavItem = styled.div`
     height: 60px;
 `
 export const Link = styled(LinkScroll)`

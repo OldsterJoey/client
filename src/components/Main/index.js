@@ -1,4 +1,4 @@
-import React, {useEffect, useParams} from 'react'
+import React, {useEffect, useState, useParams} from 'react'
 import {Button} from '../Styled'
 import {useGlobalState} from '../../utils/stateContext'
 import {getChildren} from '../../services/childrenServices';
@@ -7,7 +7,7 @@ import {getWishes} from '../../services/wishesServices';
 
 import { signOut } from '../../services/authServices'
 import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, Wrapper} from './MainElements'
-// import Navbar from '../../components/Navbar'
+import Navbar from '../../components/Navbar'
 
 export default function Main({history}) {
 	const {store,dispatch} = useGlobalState()
@@ -28,7 +28,10 @@ export default function Main({history}) {
         .catch((error) => console.log(error))
     },[])
 
-
+    const [isOpen, setIsOpen] = useState(false) 
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    }
     function handleSignOut(event){
         event.preventDefault()
         signOut(loggedInUser)
@@ -40,9 +43,10 @@ export default function Main({history}) {
     }
     
     return (
+        <>
+            <Navbar toggle={toggle}/>
             <MainContainer>
                 <MainContent>
-                    {/* <Navbar /> */}
                         <MainH1>Welcome to Wishfully, {loggedInUser}</MainH1>
                         {/* <p>{child.user_id}</p> */}
                         <MainH2>Please, select who is using the app today?</MainH2>
@@ -60,14 +64,10 @@ export default function Main({history}) {
                                 })}
                             <Wrapper>
                                 <StyledButton onClick={() => history.push(`/admin-board`)}>Parent</StyledButton>
-
                             </Wrapper>
                         </MainWrapper>
-
-                        {/* these buttons need to go to Navbar */}
-                        <Button onClick={() => history.push('/children/new') }>Add Child</Button>
-                        <Button onClick={(handleSignOut) => history.push('/')} >Sign Out</Button>	
                 </MainContent>
             </MainContainer>
+            </>
     )
 }
