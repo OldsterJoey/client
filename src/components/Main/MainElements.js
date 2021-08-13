@@ -17,6 +17,7 @@ export const MainContent = styled.div`
     z-index: 1;
     height: 890px;
     width: 100%;
+    margin-bottom: 100px;
     max-width: 800px;
     margin-right: auto;
     margin-left: auto; 

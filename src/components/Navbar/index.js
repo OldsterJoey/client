@@ -10,29 +10,27 @@ import {
     NavLogo, 
     NavMenu, 
     NavItem, 
-    Link, 
-    Button, 
-    Span} from '../Styled'
+    Link, NavBtnLink, NavBtn
+} from './NavbarElements'
 
-
+import {Button, Span} from '../../components/Styled'
 
 export default function Navbar({toggle}){
-    let history = useHistory()
-
 	const {store,dispatch} = useGlobalState()
 	const {loggedInUser} = store
+    let history = useHistory()
 
-        const [scrollNav, setScrollNav] = useState(false)
-    
-        const changeNav = () => {
-            if(window.scrollY >= 80) {
-                setScrollNav(true)
-            } else{
-                setScrollNav(false)
-            }
+    const [scrollNav, setScrollNav] = useState(false)
+
+    const changeNav = () => {
+    if(window.scrollY >= 0) {
+        return setScrollNav(true)
+    } else{
+        setScrollNav(false)
         }
+    }
     
-        useEffect(() => {
+    useEffect(() => {
             window.addEventListener('scroll', changeNav)
         })
     
@@ -46,8 +44,10 @@ export default function Navbar({toggle}){
             .then(() => {
                 dispatch({type: 'setLoggedInUser', data: null})
                 dispatch({type: 'setToken', data: null})
-    
-            } )
+    			history.push(`/`) 
+
+            })
+			.catch((error) => console.log(error))
         }
     return (
         <>
@@ -55,24 +55,22 @@ export default function Navbar({toggle}){
                 <NavbarContainer>
                     <NavLogo to='/' onClick={toggleHome}>Wishfully</NavLogo>
                     <NavMenu>
-                        {loggedInUser ?
-                                <NavItem>
-                                <Link to="/main" activeClass="active" offset={-80}
-                                smooth={true} duration={500} spy={true} 
-                                >Home</Link>
-                                <Button onClick={() => history.push('/jokes/new') }>Add New Child</Button>	
-                                <Button onClick={handleSignOut}>Sign Out</Button>	
-
-                                <Span>{loggedInUser}</Span>
-                                </NavItem> 
-			                :
-                                <NavItem>
+                        <NavBtn>
+                            <NavBtnLink to="/main" >Home</NavBtnLink>
+                        </NavBtn>
+                        <NavBtn>
+                            <NavBtnLink to="/children/new" >Add New Child</NavBtnLink>
+                        </NavBtn>
+                        <NavBtn>
+                            <NavBtnLink onClick={handleSignOut}>Sign out</NavBtnLink>
+                        </NavBtn>
+                                {/* <NavItem>
                                 <Link to="/sign-in" activeClass="active" offset={-80}
                                     smooth={true} duration={500} spy={true}
                                         >Sign In</Link>                                    
                                     <Button onClick={() => history.push('/sign_in')}>Sign In</Button>
                                 </NavItem> 
-                        }
+                        } */}
                     </NavMenu>
                 </NavbarContainer>
             </Nav>
