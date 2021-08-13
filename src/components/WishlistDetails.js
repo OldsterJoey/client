@@ -40,7 +40,7 @@ export default function WishlistDetails() {
 				setFormState({
 					wishlist_id: wishlist.id,
 					name: wishlist.name, 
-					wishes: wishlist.wishes
+					wishes: wishlist.wishes 
 				})
 			})
 		}
@@ -78,15 +78,15 @@ export default function WishlistDetails() {
 		<div>
 			<div>
 			<Label>Wishlist:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
+				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 	
 			</div>
 		
 			<Label>Wishes:</Label>
-			{wishes.map((subWishes, subIndex) => {
+			{wishes.map((wish, index) => {
 				return(
 					<ol>
-						<BigTextInput key={subIndex} type='text' name='name' value={subWishes.name} onChange={handleChange}></BigTextInput>
+						<BigTextInput key={index} type='text' name='name' value={wish.name} onChange={handleChange}></BigTextInput>
 					</ol>
 				)
 				// return <li key={subIndex}>{subWishes.name}</li>

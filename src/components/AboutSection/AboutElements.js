@@ -123,8 +123,6 @@ export const Wrapper = styled.div`
     padding: 6px 6px 6px;
     text-align: center;
     justify-self: center;
-
-
 `
 
 
