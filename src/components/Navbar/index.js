@@ -9,13 +9,10 @@ import {
     NavbarContainer, 
     NavLogo, 
     NavMenu, 
-    NavItem, 
-    Link, NavBtnLink, NavBtn
+    NavBtnLink, NavBtn
 } from './NavbarElements'
 
-import {Button, Span} from '../../components/Styled'
-
-export default function Navbar({toggle}){
+export default function Navbar(){
 	const {store,dispatch} = useGlobalState()
 	const {loggedInUser} = store
     let history = useHistory()

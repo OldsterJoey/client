@@ -11,7 +11,7 @@ export default function NewWishlist() {
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {store, dispatch} = useGlobalState()
+	const {dispatch} = useGlobalState()
 
 	useEffect(() => {
 		if(id) {
