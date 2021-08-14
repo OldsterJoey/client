@@ -1,5 +1,4 @@
-import React, {useEffect, useState, useParams} from 'react'
-import {Button} from '../Styled'
+import React, {useEffect, useState} from 'react'
 import {useGlobalState} from '../../utils/stateContext'
 import {getChildren} from '../../services/childrenServices';
 import {getWishlists} from '../../services/wishlistsServices';
@@ -10,7 +9,7 @@ import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, W
 import Navbar from '../../components/Navbar'
 
 export default function Main({history}) {
-	const {store,dispatch} = useGlobalState()
+	const {store, dispatch} = useGlobalState()
     const {children, loggedInUser} = store
 	// const {id} = useParams()
 

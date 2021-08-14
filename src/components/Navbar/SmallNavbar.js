@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {animateScroll as scroll} from 'react-scroll';
-import {useHistory} from 'react-router-dom'
-import {useGlobalState} from '../../utils/stateContext'
-import {signOut} from '../../services/authServices'
 
 import {
     Nav, 
@@ -14,10 +11,7 @@ import {
 
 // import {Button, Span} from '../../components/Styled'
 
-export default function SmallNavbar({toggle}){
-	const {store,dispatch} = useGlobalState()
-	const {loggedInUser} = store
-    let history = useHistory()
+export default function SmallNavbar(){
 
     const [scrollNav, setScrollNav] = useState(false)
 
