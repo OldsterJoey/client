@@ -1,12 +1,15 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
+import {animateScroll as scroll} from 'react-scroll';
 
 import { AboutContainer, AboutContent, AboutHeading, AboutHeading2, AboutText, AboutBtnWrapper, Wrapper, AboutButton } from './AboutElements'
 
 
 const AboutSection = () => {
     let history = useHistory()
-
+    const toggleHome = () => {
+        scroll.scrollToTop();
+    }
     return (
         <>
         <AboutContainer>
@@ -26,7 +29,7 @@ const AboutSection = () => {
                 </Wrapper>
                 <AboutText>Our app will find the closest matching present from the online shop - just save the shop link and price to your budget shopping list!</AboutText>
                 <AboutBtnWrapper>
-                    <AboutButton onClick={() => history.push('/sign_in')}>Let's Go!</AboutButton>
+                    <AboutButton onClick={(toggleHome) => history.push('/sign_in')}>Let's Go!</AboutButton>
                 </AboutBtnWrapper>
             </AboutContent> 
 
