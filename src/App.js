@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useReducer} from 'react';
+import React,{useReducer, useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import stateReducer from './utils/stateReducer';
 import {StateContext} from './utils/stateContext';
@@ -16,7 +16,9 @@ import Admin from './pages/admin-board';
 import NewWishlist from './components/NewWishlist';
 import NewWish from './components/NewWish';
 import WishDetails from './components/WishDetails';
-
+import {getChildren} from './services/childrenServices';
+import {getWishlists} from './services/wishlistsServices';
+import {getWishes} from './services/wishesServices';
 
 function App() {
 
@@ -28,6 +30,20 @@ function App() {
 		auth: {token: sessionStorage.getItem("token") || null}
 	}
 	const [store, dispatch] = useReducer(stateReducer,initialState)
+
+  useEffect(() => {
+    getChildren()
+    .then((children) => dispatch({type: 'setChildren', data: children}))
+  .catch((error) => console.log(error))
+
+  getWishlists()
+    .then((wishlists) => dispatch({type: 'setWishlists', data: wishlists}))
+    .catch((error) => console.log(error))
+
+  getWishes()
+    .then((wishes) => dispatch({type: 'setWishes', data: wishes}))
+    .catch((error) => console.log(error))
+  },[])
 
   return (
     <div>
