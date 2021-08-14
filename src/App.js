@@ -19,6 +19,7 @@ import WishDetails from './components/WishDetails';
 import {getChildren} from './services/childrenServices';
 import {getWishlists} from './services/wishlistsServices';
 import {getWishes} from './services/wishesServices';
+import UpdateWishlist from './components/UpdateWishlist'
 
 function App() {
 
@@ -59,7 +60,7 @@ function App() {
             <Route exact path="/child/update/:id" component={NewChild}></Route>
             <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
-            <Route exact path="/wishlist/update/:id" component={NewWishlist}></Route>
+            <Route exact path="/wishlist/update/:id" component={UpdateWishlist}></Route>
             <Route exact path="/wish/:id" component={WishDetails}></Route>
             <Route exact path="/wish/new" component={NewWish}></Route>
             <Route exact path="/wish/update/:id" component={NewWish}></Route>
