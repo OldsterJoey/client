@@ -16,14 +16,15 @@ export default function WishlistDetails() {
 
 	const wishes = wishlist && wishlist.wishes 
 
-	if (!wishes) {
-	return (
-	<div>
-		{wishlist.name}
-		<p>No wishes have been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
-	</div>
-	)}
+	if (!wishlist) return null //issue was that wishlist.name was being called, but didnt exist 
+	// {
+	// return (
+	// <div>
+	// 	{wishlist.name}
+	// 	<p>No wishes have been saved yet</p>
+	// 	<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
+	// </div>
+	// )}
 	function handleDelete() {
 		deleteWishlist(id)
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?

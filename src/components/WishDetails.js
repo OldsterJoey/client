@@ -14,15 +14,15 @@ export default function WishDetails() {
 	console.log(wish)
 	let history = useHistory()
 
-    const wishes = wishlist && wishlist.wishes //review
+    // const wishes = wishlist && wishlist.wishes //review
 
-    if(!wish) return null
-    return (
-        <div>
-            <Panel>
-				<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
-				<Button onClick={handleDelete}>Delete Wishlist</Button>
-			</Panel>
-        </div>
-    )
+    // if(!wish) return null
+    // return (
+    //     <div>
+    //         <Panel>
+	// 			<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
+	// 			<Button onClick={handleDelete}>Delete Wishlist</Button>
+	// 		</Panel>
+    //     </div>
+    // )
 }
