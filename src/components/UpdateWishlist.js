@@ -4,11 +4,10 @@ import {Label, BigTextInput, Button} from './Styled'
 import {createWishlist, getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
-export default function NewWishlist() {
+export default function UpdateWishlist() {
 	const initialFormState = {
 		name: '',
 		child_profile_id: ''    
-    
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
@@ -16,20 +15,20 @@ export default function NewWishlist() {
 	const {dispatch, store} = useGlobalState()
 	const {children} = store;
 
-	// useEffect(() => {
-	// 	if(id) {
-	// 		getWishlist(id)
-	// 		.then((wishlist) => {
-	// 			console.log(wishlist)
-    //             const child = children.find((child) => child.id === wishlist.child_profile_id)
-	// 			setFormState({
-	// 				name: wishlist.name,
-    //                 child_profile_id: child.id
-	// 			})
+	useEffect(() => {
+		if(id) {
+			getWishlist(id)
+			.then((wishlist) => {
+				console.log(wishlist)
+                const child = children.find((child) => child.id === wishlist.child_profile_id)
+				setFormState({
+					name: wishlist.name,
+                    child_profile_id: child.id
+				})
 
-	// 		})
-    //         .catch((error) => console.log(error));
-	// }},[])
+			})
+            .catch((error) => console.log(error));
+	}},[])
 
 	function handleChange(event) {
 		setFormState({
@@ -40,14 +39,22 @@ export default function NewWishlist() {
 	}
 	function handleClick(event) {
 		event.preventDefault()
-		createWishlist({...formState})
-		.then((wishlist) => {
+		if(id) {
+			updateWishlist( {id: id, ...formState})
+			.then(() => {
+				dispatch({type: 'updateWishlist', data: {id: id, ...formState}})
+				history.push(`/wishlist/${id}`)
+			})
+		}
+		// else {
+		// 	createWishlist({...formState})
+		// 	.then((wishlist) => {
 		
-			dispatch({type: 'addWishlist', data: wishlist})
-			history.push(`/child/${id}`)
-		})
-		.catch((error) => console.log(error))
-
+		// 		dispatch({type: 'addWishlist', data: wishlist})
+		// 		history.push(`/child/${id}`)
+		// 	})
+		// 	.catch((error) => console.log(error))
+		// }
 	}
 	return (
 		<div>
@@ -56,7 +63,7 @@ export default function NewWishlist() {
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 			<Button onClick={handleClick}>
 				{/* {id ? 'Update' : 'Create'} */}
-	Create Wishlist
+				Update
 				</Button>
 		</div>
 	)

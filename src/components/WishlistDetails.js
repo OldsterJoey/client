@@ -20,16 +20,12 @@ export default function WishlistDetails() {
 		.catch((error) => console.log(error))
 	},[id])
 
-	// wishlists.find(wishlist => wishlist.id === parseInt(id))
-	console.log(wishlist)
 	let history = useHistory()
-
-	// const wishes = wishlist && wishlist.wishes 
 
 	if (!wishlist) return (
 	<div>
 		<p>No wishlist has been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/new`)}>Create Wishlist</Button>
+		<Button onClick={() => history.push(`/wishlist/new?child_profile_id=${id}`)}>Create Wishlist</Button>
 	</div>
 	)
 	function handleDelete() {
