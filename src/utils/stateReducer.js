@@ -26,7 +26,8 @@ export default function stateReducer (state, action) {
 		case 'updateChild': {
 			const child = state.children.find((child) => child.id === action.data.id)
 			const theRest = state.children.filter((child) => child.id !== action.data.id)
-			const updatedChild = Object.assign(child, action.data)
+			const newChild = child || {};
+			const updatedChild = Object.assign(newChild, action.data)
 			return {
 				...state,
 				children: [updatedChild, ...theRest]
@@ -43,6 +44,7 @@ export default function stateReducer (state, action) {
 		}
 
 		case 'addWishlist': {
+
 			return {
 				...state,
 				wishlists: [action.data, ...state.wishlists]
@@ -62,7 +64,8 @@ export default function stateReducer (state, action) {
 		case 'updateWishlist': {
 			const wishlist = state.wishlists.find((wishlist) => wishlist.id === action.data.id)
 			const theRest = state.wishlists.filter((wishlist) => wishlist.id !== action.data.id)
-			const updatedWishlist = Object.assign(wishlist, action.data)
+			const newWishList = wishlist || {};
+			const updatedWishlist = Object.assign(newWishList, action.data);
 			return {
 				...state,
 				wishlists: [updatedWishlist, ...theRest]
@@ -97,7 +100,8 @@ export default function stateReducer (state, action) {
 		case 'updateWish': {
 			const wish = state.wishes.find((wish) => wish.id === action.data.id)
 			const theRest = state.wishes.filter((wish) => wish.id !== action.data.id)
-			const updatedWish = Object.assign(wish, action.data)
+			const newWish = wish || {};
+			const updatedWish = Object.assign(newWish, action.data)
 			return {
 				...state,
 				wishes: [updatedWish, ...theRest]

@@ -15,8 +15,8 @@ export async function getWishlist(id) {
     return response.data
 }
 
-export async function createWishlist(wishlist) {
-	const response = await server.post('/api/wish_lists', wishlist)
+export async function createWishlist(wishlist){
+    const response = await server.post(`api/wish_lists/`, wishlist)
     console.log(response)
     return response.data
 }

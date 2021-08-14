@@ -1,36 +1,42 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
-import {getWishlist,createWishlist, updateWishlist} from '../services/wishlistsServices'
+import {createWishlist, getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
 export default function NewWishlist() {
 	const initialFormState = {
-		name:  "",
-	}
+		name: '',
+        child_profile_id: ''    
+    }
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {dispatch} = useGlobalState()
+	const {dispatch, store} = useGlobalState()
+	const {children} = store;
 
 	useEffect(() => {
 		if(id) {
 			getWishlist(id)
 			.then((wishlist) => {
 				console.log(wishlist)
+                const child = children.find((child) => child.id === wishlist.child_profile_id)
 				setFormState({
-					wishlist_id: wishlist.id,
-					name: wishlist.name, 
+					name: wishlist.name,
+                    child_profile_id: child.id
 				})
-			})
-		}
-	},[id])
 
+			})
+            .catch((error) => console.log(error));
+	
+
+	}},[])
 
 	function handleChange(event) {
 		setFormState({
 			...formState,
-			[event.target.name]: event.target.value
+			[event.target.name]: event.target.value,
+            [event.target.child_profile_id]: event.target.value
 		})
 		
 	}
@@ -46,18 +52,19 @@ export default function NewWishlist() {
 		else {
 			createWishlist({...formState})
 			.then((wishlist) => {
-				dispatch({type: 'createWishlist', data: {wishlist, ...formState}})
+		
+				dispatch({type: 'addWishlist', data: wishlist})
 				history.push(`/wishlist/${id}`)
 			})
 			.catch((error) => console.log(error))
 		}
 	}
-
 	return (
-			<div>
+		<div>
+
 			<Label>Wishlist:</Label>
-				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>	
-				<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
-			</div>
+			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
+			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+		</div>
 	)
 }

@@ -6,12 +6,13 @@ import {useGlobalState} from '../utils/stateContext'
 
 export default function NewChild() {
 	const initialFormState = {
-		name:  "",
+		name: ''
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {dispatch} = useGlobalState()
+	const {dispatch, store} = useGlobalState()
+	const {children} = store;
 
 	useEffect(() => {
 		if(id) {
@@ -19,13 +20,11 @@ export default function NewChild() {
 			.then((child) => {
 				console.log(child)
 				setFormState({
-					child_id: child.id,
-					name: child.name 
+					name: child.name
 				})
 			})
 		}
 	},[id])
-
 
 	function handleChange(event) {
 		setFormState({
@@ -46,7 +45,8 @@ export default function NewChild() {
 		else {
 			createChild({...formState})
 			.then((child) => {
-				dispatch({type: 'createChild', data: {child, ...formState}})
+		
+				dispatch({type: 'addChild', data: child})
 				history.push('/main')
 			})
 			.catch((error) => console.log(error))
@@ -54,6 +54,7 @@ export default function NewChild() {
 	}
 	return (
 		<div>
+
 			<Label>Child:</Label>
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
