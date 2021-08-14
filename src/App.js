@@ -9,11 +9,13 @@ import SignUp from './components/SignUp';
 import Main from './components/Main';
 // import Navbar from './componenets/Navbar';
 import ChildDetails from'./components/ChildDetails';
-import WishlistDetails from './components/WishlistDetails'
-import NewChild from './components/NewChild'
+import WishlistDetails from './components/WishlistDetails';
+import NewChild from './components/NewChild';
 // import {userPics} from './utils/userPics'
-import Admin from './pages/admin-board'
+import Admin from './pages/admin-board';
 import NewWishlist from './components/NewWishlist';
+import NewWish from './components/NewWish';
+import WishDetails from './components/WishDetails';
 
 
 function App() {
@@ -42,6 +44,9 @@ function App() {
             <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
             <Route exact path="/wishlist/update/:id" component={NewWishlist}></Route>
+            <Route exact path="/wish/:id" component={WishDetails}></Route>
+            <Route exact path="/wish/new" component={NewWish}></Route>
+            <Route exact path="/wish/update/:id" component={NewWish}></Route>
             <Route exact path="/admin-board" component={Admin}></Route>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
