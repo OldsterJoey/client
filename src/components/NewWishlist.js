@@ -7,7 +7,7 @@ import {useGlobalState} from '../utils/stateContext'
 export default function NewWishlist() {
 	const initialFormState = {
 		name: '',
-        child_profile_id: 4    
+        child_profile_id: ''    
     }
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
@@ -30,12 +30,13 @@ export default function NewWishlist() {
             .catch((error) => console.log(error));
 	
 
-	}},[id])
+	}},[])
 
 	function handleChange(event) {
 		setFormState({
 			...formState,
-			[event.target.name]: event.target.value
+			[event.target.name]: event.target.value,
+            [event.target.child_profile_id]: event.target.value
 		})
 		
 	}
