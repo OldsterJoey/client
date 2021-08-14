@@ -4,9 +4,11 @@ import {getChild} from '../services/childrenServices'
 import {Button, Panel} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteChild} from '../services/childrenServices'
+import WishlistDetails from './WishlistDetails'
 
 export default function ChildDetails() {
 	const [child,setChild] = useState(null)
+
 	const {id} = useParams()
 	let history = useHistory()
 	const {store,dispatch} = useGlobalState()
@@ -27,7 +29,8 @@ export default function ChildDetails() {
 	}
 	return (
 		<div>
-			<p>Author: {child.name}</p>			
+			<p>Author: {child.name}</p>	
+			{/* <p>wishlist: {child.wishlist.name}</p>		 */}
 
 			{loggedInUser  &&
 				<Panel>
@@ -35,6 +38,8 @@ export default function ChildDetails() {
 					<Button onClick={handleDelete}>Delete</Button>
 				</Panel>
 			}
+
+			<WishlistDetails child={child} childId={child.id} wishlist={child.wish_list}/>
 		</div>
 	)
 }
