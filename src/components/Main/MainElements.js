@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.section`
     display: flex;
-    vertical-align: bottom; 
+    vertical-align: top; 
     /* overflow-y: scroll;  */
     scroll-behavior: smooth;
     /* scroll-snap-type: y mandatory; */
