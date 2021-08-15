@@ -43,14 +43,22 @@ export default function WishesDetails(props) {
 			{wishes.map((wish, index) => {
 				return(
 					<>
-            			<p>{wish.name}</p>
-			            <Panel key={index}>
-							<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wishes</Button>
-							<Button onClick={handleDelete}>Delete Wish</Button>
-						</Panel>
+							<ol>
+								<li key={index} wish={wish}>
+								<p>{wish.name}</p>
+								<Panel>
+									<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wish</Button>
+									<Button onClick={handleDelete}>Delete Wish</Button>
+
+								</Panel>
+								</li>
+							</ol>
+
+
 					</>
 				)
 			})}
+			<Link to={`/wishes/new?wish_list_id=${id}`}>Add New Wish</Link>
 
         </div>
     )

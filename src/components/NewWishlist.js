@@ -36,7 +36,7 @@ export default function NewWishlist() {
 		event.preventDefault()
 		createWishlist({...formState})
 		.then((wishlist) => {
-		
+			debugger
 			dispatch({type: 'addWishlist', data: wishlist})
 			history.push(`/child/${id}`)
 		})
@@ -49,10 +49,7 @@ export default function NewWishlist() {
 
 			<Label>Wishlist:</Label>
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>
-				{/* {id ? 'Update' : 'Create'} */}
-	Create Wishlist
-				</Button>
+			<Button onClick={handleClick}>Create Wishlist</Button>
 		</div>
 	)
 }
