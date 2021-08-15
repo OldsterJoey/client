@@ -4,23 +4,30 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.section`
     display: flex;
-    vertical-align: top; 
+    align-items: flex-start;
     /* overflow-y: scroll;  */
     scroll-behavior: smooth;
     /* scroll-snap-type: y mandatory; */
     background-color: #54376E;
     padding-top: 80px;
+    height: 890px;
+    @media screen and (max-width: 480px){
+        height: 1100px;
+    }
+    @media screen and (max-width: 280px){
+        height: 1200px;
+    }
 `
 
 export const MainContent = styled.div`
     display: grid;
     z-index: 1;
-    height: 890px;
     width: 100%;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     max-width: 800px;
     margin-right: auto;
     margin-left: auto; 
+    align-items: center;   
     justify-content: space-evenly;
     @media screen and (max-width: 480px){
         height: 960px;
@@ -30,7 +37,7 @@ export const MainContent = styled.div`
         height: 960px;
     }
     @media screen and (max-width: 280px){
-        height: 1100px;
+        height: 1000px;
     }
 `
 
@@ -39,10 +46,11 @@ export const MainWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
+    place-items: center;
+    /* padding: 50px; */
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
     grid-gap: 16px;
-    padding: 0 50px;
+    padding: 50px 50px;
 
     @media screen and (max-width: 900px) {
         grid-template-columns: 1fr 1fr;
@@ -69,6 +77,7 @@ export const MainHeading = styled.h1`
 
 export const MainH1 = styled.h1`
     color: #fff;
+    padding: 50px;
     font-size: 2rem;
     text-align: center;
     @media screen and (max-width: 780px) {
