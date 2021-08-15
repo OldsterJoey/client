@@ -9,8 +9,9 @@ function useQuery() {
 	return new URLSearchParams(useLocation().search);
   }
 
-export default function NewWishes() {
+export default function NewWish() {
 	let query = useQuery();
+	console.log(query)
 
 	const initialFormState = {
 			name: '',
