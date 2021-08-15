@@ -4,7 +4,7 @@ import {Label, BigTextInput, Button} from './Styled'
 import {getWish, updateWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
 
-export default function UpdateWishes() {
+export default function UpdateWish() {
 	const initialFormState = {
 		name: '',
 		wish_list_id: ''    
@@ -29,6 +29,9 @@ export default function UpdateWishes() {
             .catch((error) => console.log(error));
 	}},[])
 
+	const wish = wishes.find((wish) => wish.id = parseInt(id))
+	const wishlistId = wish.wish_list_id
+
 	function handleChange(event) {
 		setFormState({
 			...formState,
@@ -48,17 +51,10 @@ export default function UpdateWishes() {
 	}
 	return (
 
-		<div>
-			<Label>Wishes:</Label>
-			{wishes.map((wish, index) => {
-				return (
-					<div>
-					<ol>
-					<BigTextInput key={wish.index} type='text' name='name' value={formState.name} onChange={handleChange(index)}></BigTextInput>
-					</ol>
-					<Button onClick={handleClick}>Update Wishes</Button>
-					</div>
-				)})}
+		<div key={wish.index}>
+			<Label>Wish:</Label>
+			<BigTextInput key={wish.id} type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
+			<Button onClick={handleClick}>Update Wishes</Button>
 
 		</div>
 	)
