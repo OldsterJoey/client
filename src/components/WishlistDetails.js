@@ -4,32 +4,38 @@ import {Panel,Button} from './Styled'
 import {deleteWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 import { getWishlist} from '../services/wishlistsServices'
+import {Link} from 'react-router-dom'
 
-export default function WishlistDetails() {
-	const [wishlist,setWishlist] = useState(null)
+export default function WishlistDetails(props) {
+	// const [wishlist,setWishlist] = useState(null)
 
 	const {store,dispatch} = useGlobalState()
     const {wishlists, children} = store
 	const {id} = useParams()
+	const {child, childId, wishlist} = props
 
 	// const child = children.find(child => child.id === parseInt(id))
 
-	useEffect(() => {
-		getWishlist(id)
-		.then((wishlist) => setWishlist(wishlist))
-		.catch((error) => console.log(error))
-	},[id])
+	// useEffect(() => {
+	// 	if(id !== 'new'){
+	// 	getWishlist(id)
+	// 	.then((wishlist) => setWishlist(wishlist))
+	// 	.catch((error) => console.log(error))			
+	// 	}
+	// 	console.log(id)
+
+	// },[id])
 
 	let history = useHistory()
 
 	if (!wishlist) return (
 	<div>
 		<p>No wishlist has been saved yet</p>
-		<Button onClick={() => history.push(`/wishlist/new?child_profile_id=${id}`)}>Create Wishlist</Button>
+		<Link to={`/wishlist/new?child_profile_id=${id}`}>Create Wishlist</Link>
 	</div>
 	)
 	function handleDelete() {
-		deleteWishlist(id)
+		deleteWishlist(wishlist.id)
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
 			dispatch({type: 'deleteWishlist', data: id})
