@@ -11,8 +11,7 @@ export default function NewChild() {
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {dispatch, store} = useGlobalState()
-	const {children} = store;
+	const {dispatch} = useGlobalState()
 
 	useEffect(() => {
 		if(id) {

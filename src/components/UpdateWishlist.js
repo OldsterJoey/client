@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
-import {createWishlist, getWishlist, updateWishlist} from '../services/wishlistsServices'
+import {getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
 export default function UpdateWishlist() {
@@ -43,7 +43,7 @@ export default function UpdateWishlist() {
 			updateWishlist( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWishlist', data: {id: id, ...formState}})
-				history.push(`/wishlist/${id}`)
+				history.push(`/child/${id}`)
 			})
 		}
 		// else {

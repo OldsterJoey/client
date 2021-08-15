@@ -1,15 +1,15 @@
 import server from '../config/api'
 
 
-// helper methpod to descructure data of children
-function transformChildren(child){
-    return{
-        author: "test",
-        id: child.id,
-        name: child.name,
-        wishlist: child.wish_list.name
-    }
-}
+// // helper methpod to descructure data of children
+// function transformChildren(child){
+//     return{
+//         author: "test",
+//         id: child.id,
+//         name: child.name,
+//         wishlist: child.wish_list.name
+//     }
+// }
 
 export async function getChildren(){
     const response = await server.get('/api/child_profiles');

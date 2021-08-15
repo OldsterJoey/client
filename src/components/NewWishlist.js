@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import {useHistory, useParams, useLocation} from 'react-router-dom'
+import React, {useState} from 'react'
+import {useHistory, useLocation} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
-import {createWishlist, getWishlist, updateWishlist} from '../services/wishlistsServices'
+import {createWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
 
@@ -20,9 +20,7 @@ export default function NewWishlist() {
 	console.log(query)
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
-	// let {id} = useParams()
-	const {dispatch, store} = useGlobalState()
-	const {children} = store;
+	const {dispatch} = useGlobalState()
 	const id = initialFormState.child_profile_id
 
 
