@@ -28,7 +28,7 @@ export default function UpdateWishlist() {
 
 			})
             .catch((error) => console.log(error));
-	}},[])
+	}},[id, children])
 
 	function handleChange(event) {
 		setFormState({

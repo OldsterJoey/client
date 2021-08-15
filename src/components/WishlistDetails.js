@@ -1,17 +1,19 @@
 import React from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Panel,Button} from './Styled'
+import {LineWrapper,Button, BtnWrapper, Btn} from './Styled'
 import {deleteWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 import {Link} from 'react-router-dom'
 import WishDetails from'./WishDetails'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 export default function WishlistDetails(props) {
 
 	const {dispatch} = useGlobalState()
 	const {id} = useParams()
 	const {wishlist} = props
-console.log(props)
+	console.log(props)
 	let history = useHistory()
 
 	if (!wishlist) return (
@@ -31,18 +33,26 @@ console.log(props)
 	// console.log(wishes)
 
 	return (
-		<div>
-			<p>Wishlist: {wishlist.name}</p>
+		<ListGroup variant="flush">
+			<ListGroup.Item>Wishlist:</ListGroup.Item>
+			<LineWrapper>
+				<ListGroup.Item>Name: {wishlist.name}
+				<ButtonGroup aria-label="">
+					<BtnWrapper>
+						<Btn onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist Name</Btn>
+					</BtnWrapper>
 
-
-			<Panel>
-					<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wishlist</Button>
-					<Button onClick={handleDelete}>Delete Wishlist</Button>
-				</Panel>	
-
+					<BtnWrapper>
+						<Btn onClick={handleDelete}>Delete Wishlist Name</Btn>
+					</BtnWrapper>
+				</ButtonGroup>
+				</ListGroup.Item>
+			</LineWrapper>
+		
 			<WishDetails wishlist={wishlist} wishlistId={wishlist.id} wishes={wishlist.wishes}/>
+		</ListGroup>
 
-		</div>
+		
 
 	)
 }

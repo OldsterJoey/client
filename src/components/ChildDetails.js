@@ -1,10 +1,15 @@
 import React,{ useState,useEffect} from 'react'
 import {useParams,useHistory} from 'react-router-dom'
 import {getChild} from '../services/childrenServices'
-import {Button, Panel} from './Styled'
+import {MainContainer, FormContent, LineWrapper, Btn, BtnWrapper} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteChild} from '../services/childrenServices'
 import WishlistDetails from './WishlistDetails'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Navbar from './Navbar'
 
 export default function ChildDetails() {
 	const [child,setChild] = useState(null)
@@ -29,18 +34,38 @@ export default function ChildDetails() {
 		})
 	}
 	return (
-		<div>
-			<p>Author: {child.name}</p>	
+		<>
+		<Navbar />
+		<MainContainer >
+			<FormContent>
+				<Container style={{ alignContent: 'center', alignItems: 'flex-end' }}>
+			<Card style={{ width: '45rem'}}>
+				<ListGroup style={{ padding: '40px'}} >
+					<LineWrapper>
+						<ListGroup.Item>Author: {child.name}
 
-			{loggedInUser  &&
-				<Panel>
-					<Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button>
-					<Button onClick={handleDelete}>Delete</Button>
-				</Panel>
-			}
+						{loggedInUser  &&
+						<ButtonGroup>
+							<BtnWrapper>
+								<Btn onClick={() => history.push(`/child/update/${id}`)}>Update</Btn>
+							</BtnWrapper>
 
-			<WishlistDetails child={child} wishlist={child.wish_list}/>
-		</div>
+							<BtnWrapper>
+								<Btn onClick={handleDelete}>Delete</Btn>
+							</BtnWrapper>
+						</ButtonGroup>
+						}
+						</ListGroup.Item>
+					</LineWrapper>
+
+					<WishlistDetails child={child} wishlist={child.wish_list}/>
+				</ListGroup>
+		</Card>
+		</Container>
+		</FormContent>
+		</MainContainer>
+
+		</>
 	)
 }
 

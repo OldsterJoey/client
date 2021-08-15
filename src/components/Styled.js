@@ -1,4 +1,5 @@
-import styled from 'styled-components' 
+import styled from 'styled-components'
+import {Link} from 'react-router-dom';
 
 
 export const Span = styled.span`
@@ -38,7 +39,8 @@ export const Container = styled.div`
     min-height: 1200px;
     background-color: #54376E;
     width: 100vw;
-
+    align-items: center;
+    justify-content: center;
     position: relative;
     bottom: 0;
     left: 0;
@@ -162,3 +164,76 @@ export const FormContent = styled.div`
         padding: 5px;
     }
 `;
+
+// styling for buttons within children, wishlists and wishes components
+
+export const BtnWrapper = styled.div`
+    display: flex;
+    align-items: center;
+
+`
+
+export const Btn = styled.button`
+    border-radius: 50px;
+    background: #edeae5;
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: grey;
+    margin-right: 20px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background:#DA7B93;
+        color: #000;
+        ;
+    }
+`
+
+export const LineWrapper = styled.div`
+display: inline-block;
+`
+export const TextWrapper = styled.p`
+display: flex;
+`
+
+export const MainWrapper = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    /* padding: 50px; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 50px 50px;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        /* padding: 0 20px; */
+    }
+`
+
+export const MainContainer = styled.div`
+    min-height: 1200px;
+    background-color: #54376E;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
+`

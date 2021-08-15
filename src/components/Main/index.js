@@ -3,8 +3,6 @@ import {useGlobalState} from '../../utils/stateContext'
 import {getChildren} from '../../services/childrenServices';
 import {getWishlists} from '../../services/wishlistsServices';
 import {getWishes} from '../../services/wishesServices';
-
-import { signOut } from '../../services/authServices'
 import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, Wrapper} from './MainElements'
 import Navbar from '../../components/Navbar'
 
@@ -31,26 +29,14 @@ export default function Main({history}) {
     const toggle = () => {
         setIsOpen(!isOpen)
     }
-    function handleSignOut(event){
-        event.preventDefault()
-        signOut(loggedInUser)
-        .then(() => {
-            dispatch({type: 'setLoggedInUser', data: null })
-            dispatch({type: 'setToken', data: null })
-			history.push(`/`) 
-        })
-    }
-    
     return (
         <>
             <Navbar toggle={toggle}/>
             <MainContainer>
                 <MainContent>
                         <MainH1>Welcome to Wishfully, {loggedInUser}</MainH1>
-                        {/* <p>{child.user_id}</p> */}
                         <MainH2>Please, select who is using the app today?</MainH2>
 
-                        {/* {loggedInUser === child.user_id &&  */}
 
                         <MainWrapper>
                             

@@ -27,10 +27,10 @@ export default function UpdateWish() {
 
 			})
             .catch((error) => console.log(error));
-	}},[])
+	}},[id, wishlists])
 
 	const wish = wishes.find((wish) => wish.id = parseInt(id))
-	const wishlistId = wish.wish_list_id
+	// const wishlistId = wish.wish_list_id
 
 	function handleChange(event) {
 		setFormState({

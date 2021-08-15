@@ -1,9 +1,12 @@
 import React from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Panel,Button} from './Styled'
+import {LineWrapper,Btn, BtnWrapper, TextWrapper} from './Styled'
 import {deleteWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
 import {Link} from 'react-router-dom'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Container from 'react-bootstrap/Container'
 
 export default function WishesDetails(props) {
 
@@ -38,28 +41,43 @@ export default function WishesDetails(props) {
 	}
 
     return (
-        <div>
-			<p>Wishes are:</p>
+		<Container>
+        <ListGroup variant="flush">
+			<ListGroup.Item>Wishes are:</ListGroup.Item>
+
 			{wishes.map((wish, index) => {
-				return(
-					<>
-							<ol>
-								<li key={index} wish={wish}>
-								<p>{wish.name}</p>
-								<Panel>
-									<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wish</Button>
-									<Button onClick={handleDelete}>Delete Wish</Button>
+				return(					
+				<LineWrapper>
+					<ListGroup.Item style={{alignContent: 'space-evenly'}}>
+						<ul>
+							<li key={index} wish={wish}>
+								<div style={{display: 'inline-block'}}>{wish.name}</div>
+									<ButtonGroup md={{ span: 3, offset: 3 }}>
+										<BtnWrapper>
+											<Btn onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wish</Btn>
+										</BtnWrapper>
 
-								</Panel>
-								</li>
-							</ol>
-
-
-					</>
+										<BtnWrapper>
+											<Btn onClick={handleDelete}>Delete Wish</Btn>
+										</BtnWrapper>
+										
+									</ButtonGroup>
+							</li>
+						</ul>
+					</ListGroup.Item>
+				</LineWrapper>
 				)
 			})}
-			<Link to={`/wishes/new?wish_list_id=${id}`}>Add New Wish</Link>
+				<ListGroup.Item variant="flush">
+					If you want to add another wish    
+					<ButtonGroup aria-label="">
 
-        </div>
+					<BtnWrapper>
+						<Btn onClick={() => history.push(`/wishes/new?wish_list_id=${id}`)}>Add New Wish</Btn>
+					</BtnWrapper>
+					</ButtonGroup>
+				</ListGroup.Item>
+        </ListGroup>
+		</Container>
     )
 }
