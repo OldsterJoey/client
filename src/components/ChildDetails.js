@@ -39,7 +39,7 @@ export default function ChildDetails() {
 				</Panel>
 			}
 
-			<WishlistDetails child={child} childId={child.id} wishlist={child.wish_list}/>
+			<WishlistDetails child={child} childId={child.id} wishlist={child.wishlist}/>
 		</div>
 	)
 }

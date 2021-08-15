@@ -58,9 +58,9 @@ function App() {
             <Route exact path="/child/:id" component={ChildDetails}></Route>
             <Route exact path="/children/new" component={NewChild}></Route>
             <Route exact path="/child/update/:id" component={NewChild}></Route>
-            <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
             <Route exact path="/wishlist/update/:id" component={UpdateWishlist}></Route>
+            <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
             <Route exact path="/wish/:id" component={WishDetails}></Route>
             <Route exact path="/wish/new" component={NewWish}></Route>
             <Route exact path="/wish/update/:id" component={NewWish}></Route>

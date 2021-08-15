@@ -1,35 +1,31 @@
 import React, {useState, useEffect} from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import {useHistory, useParams, useLocation} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
 import {createWishlist, getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
+
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+  }
+
 export default function NewWishlist() {
+	let query = useQuery();
+
 	const initialFormState = {
 		name: '',
-		child_profile_id: ''    
+		child_profile_id: query.get("child_profile_id")
     
 	}
+	console.log(query)
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
-	let {id} = useParams()
+	// let {id} = useParams()
 	const {dispatch, store} = useGlobalState()
 	const {children} = store;
+	const id = initialFormState.child_profile_id
 
-	// useEffect(() => {
-	// 	if(id) {
-	// 		getWishlist(id)
-	// 		.then((wishlist) => {
-	// 			console.log(wishlist)
-    //             const child = children.find((child) => child.id === wishlist.child_profile_id)
-	// 			setFormState({
-	// 				name: wishlist.name,
-    //                 child_profile_id: child.id
-	// 			})
 
-	// 		})
-    //         .catch((error) => console.log(error));
-	// }},[])
 
 	function handleChange(event) {
 		setFormState({
@@ -49,6 +45,7 @@ export default function NewWishlist() {
 		.catch((error) => console.log(error))
 
 	}
+	console.log("rendering New Wishlist")
 	return (
 		<div>
 
