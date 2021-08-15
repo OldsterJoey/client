@@ -1,30 +1,15 @@
-import React, {useEffect, useState}  from 'react'
+import React from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Panel,Button} from './Styled'
 import {deleteWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
-import { getWishlist} from '../services/wishlistsServices'
 import {Link} from 'react-router-dom'
 
 export default function WishlistDetails(props) {
-	// const [wishlist,setWishlist] = useState(null)
 
-	const {store,dispatch} = useGlobalState()
-    const {wishlists, children} = store
+	const {dispatch} = useGlobalState()
 	const {id} = useParams()
-	const {child, childId, wishlist} = props
-
-	// const child = children.find(child => child.id === parseInt(id))
-
-	// useEffect(() => {
-	// 	if(id !== 'new'){
-	// 	getWishlist(id)
-	// 	.then((wishlist) => setWishlist(wishlist))
-	// 	.catch((error) => console.log(error))			
-	// 	}
-	// 	console.log(id)
-
-	// },[id])
+	const {wishlist} = props
 
 	let history = useHistory()
 
@@ -36,11 +21,9 @@ export default function WishlistDetails(props) {
 	)
 	function handleDelete() {
 		deleteWishlist(wishlist.id)
-		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
 			dispatch({type: 'deleteWishlist', data: id})
 			history.push(`/main`) 
-			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
 	}
 
