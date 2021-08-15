@@ -18,6 +18,7 @@ export default function ChildDetails() {
 		.then((child) => setChild(child))
 		.catch((error) => console.log(error))
 	},[id])
+	console.log(child)
 
 	if (!child) return null
 	function handleDelete() {
@@ -30,7 +31,6 @@ export default function ChildDetails() {
 	return (
 		<div>
 			<p>Author: {child.name}</p>	
-			{/* <p>wishlist: {child.wishlist.name}</p>		 */}
 
 			{loggedInUser  &&
 				<Panel>
@@ -39,7 +39,7 @@ export default function ChildDetails() {
 				</Panel>
 			}
 
-			<WishlistDetails child={child} childId={child.id} wishlist={child.wishlist}/>
+			<WishlistDetails child={child} wishlist={child.wish_list}/>
 		</div>
 	)
 }

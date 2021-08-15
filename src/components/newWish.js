@@ -1,62 +1,79 @@
-import React, {useState, useEffect} from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import React, {useState} from 'react'
+import {useHistory, useLocation} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
+import {createWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
-import {getWish, createWish, updateWish} from '../services/wishesServices'
+import WishesDetails from './WishDetails'
 
-export default function NewChild() {
+
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+  }
+
+export default function NewWishes() {
+	let query = useQuery();
+
 	const initialFormState = {
-		name:  "",
+		wishes: [
+			{
+			firstname: '',
+			wish_list_id: query.get("wish_list_id")
+			},
+			{
+				secondname: '',
+				wish_list_id: query.get("wish_list_id")
+			},
+			{
+				thirdname: '',
+				wish_list_id: query.get("wish_list_id")
+			}
+
+		]
 	}
+
+	console.log(query)
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
-	let {id} = useParams()
-	const {dispatch} = useGlobalState()
+	const {store,dispatch} = useGlobalState()
+	const {wishes} = store
+	const id = initialFormState.wish_list_id
 
-	useEffect(() => {
-		if(id) {
-			getWish(id)
-			.then((wish) => {
-				console.log(wish)
-				setFormState({
-					wish_id: wish.id,
-					name: wish.name 
-				})
-			})
-		}
-	},[id])
 
 
 	function handleChange(event) {
 		setFormState({
 			...formState,
-			[event.target.name]: event.target.value
+			[event.target.name]: event.target.value		
 		})
 		
 	}
 	function handleClick(event) {
 		event.preventDefault()
-		if(id) {
-			updateWish( {id: id, ...formState})
-			.then(() => {
-				dispatch({type: 'updateWish', data: {id: id, ...formState}})
-				history.push(`/wish/${id}`) //review
-			})
-		}
-		else {
-			createWish({...formState})
-			.then((wish) => {
-				dispatch({type: 'createWish', data: {wish, ...formState}})
-				history.push(`/wish/${id}`) //review
-			})
-			.catch((error) => console.log(error))
-		}
+		createWishlist({...formState})
+		.then((wish) => {
+		
+			dispatch({type: 'addWish', data: wish})
+			history.push(`/wishlist/${id}`)
+		})
+		.catch((error) => console.log(error))
+
 	}
+	console.log("rendering New Wishes")
 	return (
-		<div>
-			<Label>Wish:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
-		</div>
+		<form className = "wishNew">
+			<Label>Wishes:</Label>
+			{wishes.map((wish, index) => (
+				<BigTextInput key={index}
+				placeholder="First Wish"
+					index={index}
+					wish={wish}
+					type='text' 
+					name='name' 
+					value={formState.firstname} 
+					onChange={handleChange}></BigTextInput>
+
+				))}
+					<Button onClick={handleClick}>Update Wishes</Button>
+		</form>
 	)
 }

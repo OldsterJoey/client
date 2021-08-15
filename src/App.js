@@ -15,7 +15,7 @@ import NewChild from './components/NewChild';
 import Admin from './pages/admin-board';
 import NewWishlist from './components/NewWishlist';
 import NewWish from './components/NewWish';
-import WishDetails from './components/WishDetails';
+import WishesDetails from './components/WishDetails';
 import {getChildren} from './services/childrenServices';
 import {getWishlists} from './services/wishlistsServices';
 import {getWishes} from './services/wishesServices';
@@ -61,9 +61,10 @@ function App() {
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
             <Route exact path="/wishlist/update/:id" component={UpdateWishlist}></Route>
             <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
-            <Route exact path="/wish/:id" component={WishDetails}></Route>
-            <Route exact path="/wish/new" component={NewWish}></Route>
             <Route exact path="/wish/update/:id" component={NewWish}></Route>
+
+            <Route exact path="/wishes" component={WishesDetails}></Route>
+            <Route exact path="/wishes/new" component={NewWish}></Route>
             <Route exact path="/admin-board" component={Admin}></Route>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>

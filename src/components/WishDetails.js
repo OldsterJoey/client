@@ -1,51 +1,57 @@
-import React, {useState, useEffect}  from 'react'
+import React from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {Panel,Button} from './Styled'
-import {getWish, createWish, updateWish, deleteWish} from '../services/wishesServices'
+import {deleteWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
-import {deleteWishlist, 
-	getWishlist
-} from '../services/wishlistsServices'
+import {Link} from 'react-router-dom'
 
-export default function WishDetails(child) {
-    // const [wishlist,setWishlist] = useState(null)
+export default function WishesDetails(props) {
 
-	const {store,dispatch} = useGlobalState()
-    const {wishes} = store
+	const {dispatch} = useGlobalState()
 	const {id} = useParams()
-	console.log(wishes)
+	const {wishlist} = props
+	console.log(props)
 
-    // wishlist.find(wishlist => wishlist.child_profile_id === child.id)
-    // console.log(wishlist)
-	// useEffect(() => {
-	// 	getWishlist(id)
-	// 	.then((wishlist) => setWishlist(wishlist))
-	// 	.catch((error) => console.log(error))
-	// },[id])
-
-    const wish = wishes.find(wish => wish.id === parseInt(id))
-	console.log(wish)
+	const wishes=wishlist.wishes
 	let history = useHistory()
 
+	if (wishes.length === 0) return (
+	<div>
+		<p>No wishes have been saved yet</p>
+		<Link to={`/wishes/new?wish_list_id=${id}`}>Create Wishes</Link>
+	</div>
+	)	
+	console.log(wishes)
+
+    // const wishes = wishlist && wishlist.wishes //review
+
+    const wish = wishes.find(wish => wish.id === parseInt(id))
+
 	function handleDelete() {
-		deleteWish(id)
+		deleteWish(wish.id)
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
-			dispatch({type: 'deleteWishlist', data: id})
-			history.push(`/main`) 
+			dispatch({type: 'deleteWish', data: id})
+			history.push(`/wishlist/${id}}`) 
 			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
 	}
-    // const wishes = wishlist && wishlist.wishes //review
 
-    // if(!wish) return null
     return (
         <div>
-            <p>{wish.name}</p>
-            <Panel>
-				<Button onClick={() => history.push(`/wishlist/update/${id}`)}>Update Wish</Button>
-				<Button onClick={handleDelete}>Delete Wish</Button>
-			</Panel>
+			<p>Wishes are:</p>
+			{wishes.map((wish, index) => {
+				return(
+					<>
+            			<p>{wish.name}</p>
+			            <Panel key={index}>
+							<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wishes</Button>
+							<Button onClick={handleDelete}>Delete Wish</Button>
+						</Panel>
+					</>
+				)
+			})}
+
         </div>
     )
 }

@@ -46,25 +46,13 @@ export default function UpdateWishlist() {
 				history.push(`/child/${id}`)
 			})
 		}
-		// else {
-		// 	createWishlist({...formState})
-		// 	.then((wishlist) => {
-		
-		// 		dispatch({type: 'addWishlist', data: wishlist})
-		// 		history.push(`/child/${id}`)
-		// 	})
-		// 	.catch((error) => console.log(error))
-		// }
 	}
 	return (
 		<div>
 
 			<Label>Wishlist:</Label>
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>
-				{/* {id ? 'Update' : 'Create'} */}
-				Update
-				</Button>
+			<Button onClick={handleClick}>Update</Button>
 		</div>
 	)
 }
