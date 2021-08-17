@@ -14,7 +14,7 @@ import NewChild from './components/NewChild';
 // import {userPics} from './utils/userPics'
 import Admin from './pages/admin-board';
 import NewWishlist from './components/NewWishlist';
-import NewWish from './components/NewWish';
+import NewWish from './components/newWish';
 import WishesDetails from './components/WishDetails';
 import {getChildren} from './services/childrenServices';
 import {getWishlists} from './services/wishlistsServices';
