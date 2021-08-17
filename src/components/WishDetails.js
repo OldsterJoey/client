@@ -9,16 +9,17 @@ export default function WishesDetails(props) {
 
 	const {dispatch} = useGlobalState()
 	const {id} = useParams()
-	const {wishlist} = props
+	let history = useHistory()
+
+	const {wishes, wishlistId} = props
 	console.log(props)
 
-	const wishes=wishlist.wishes
-	let history = useHistory()
+	// const wishes=wishlist.wishes
 
 	if (wishes.length === 0) return (
 	<div>
 		<p>No wishes have been saved yet</p>
-		<Link to={`/wishes/new?wish_list_id=${id}`}>Create Wishes</Link>
+		<Link to={`/wishes/new?wish_list_id=${wishlistId}`}>Create Wishes</Link>
 	</div>
 	)	
 	console.log(wishes)
@@ -32,7 +33,7 @@ export default function WishesDetails(props) {
 		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
 		.then(() => {
 			dispatch({type: 'deleteWish', data: id})
-			history.push(`/wishlist/${id}}`) 
+			history.push(`/child/${id}}`) 
 			// not sure if that is the right way to get back to the child who used to have that wishlist
 		})
 	}

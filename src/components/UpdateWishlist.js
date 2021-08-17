@@ -4,16 +4,22 @@ import {Label, BigTextInput, Button} from './Styled'
 import {getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
-export default function UpdateWishlist() {
+export default function UpdateWishlist(props) {
 	const initialFormState = {
 		name: '',
 		child_profile_id: ''    
 	}
+
+	console.log(props)
+	const {child} = props
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
 	const {dispatch, store} = useGlobalState()
 	const {children} = store;
+
+	// const child = children.find((wish) => wish.id = parseInt(id))
+
 
 	useEffect(() => {
 		if(id) {
@@ -47,6 +53,8 @@ export default function UpdateWishlist() {
 			})
 		}
 	}
+	console.log("rendering Update Wishlist")
+
 	return (
 		<div>
 

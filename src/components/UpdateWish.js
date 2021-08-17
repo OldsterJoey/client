@@ -45,7 +45,7 @@ export default function UpdateWish() {
 			updateWish( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWish', data: {id: id, ...formState}})
-				history.push(`/child/${id}`)
+				history.push(`/wishlist/${wishlistId}`)
 			})
 		}
 	}

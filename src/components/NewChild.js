@@ -44,16 +44,15 @@ export default function NewChild() {
 		else {
 			createChild({...formState})
 			.then((child) => {
-		
+				debugger
 				dispatch({type: 'addChild', data: child})
-				history.push('/main')
+				history.push(`/main`)
 			})
 			.catch((error) => console.log(error))
 		}
 	}
 	return (
 		<div>
-
 			<Label>Child:</Label>
 			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>

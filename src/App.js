@@ -58,17 +58,18 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route exact path="/main" component={Main}></Route>
 
+            <Route exact path="/child/update/:id" component={NewChild}></Route>
             <Route exact path="/child/:id" component={ChildDetails}></Route>
             <Route exact path="/children/new" component={NewChild}></Route>
-            <Route exact path="/child/update/:id" component={NewChild}></Route>
 
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
             <Route exact path="/wishlist/update/:id" component={UpdateWishlist}></Route>
             <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
 
             <Route exact path="/wish/update/:id" component={UpdateWish}></Route>
-            <Route exact path="/wishes" component={WishesDetails}></Route>
             <Route exact path="/wishes/new" component={NewWish}></Route>
+            <Route exact path="/wishes" component={WishesDetails}></Route>
+
             <Route exact path="/admin-board" component={Admin}></Route>
             <Route path="/sign_in" component={SignIn}></Route>
             <Route path="/sign_up" component={SignUp}></Route>
