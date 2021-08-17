@@ -1,17 +1,18 @@
 import React, {useState, useEffect} from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
 import {getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 
-export default function UpdateWishlist() {
+
+export default function UpdateWishlist(props) {
 	const initialFormState = {
 		name: '',
-		child_profile_id: ''    
+		child_profile_id: useParams().id  
 	}
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
-	let {id} = useParams()
+	const {id} = useParams()
 	const {dispatch, store} = useGlobalState()
 	const {children} = store;
 
@@ -19,16 +20,14 @@ export default function UpdateWishlist() {
 		if(id) {
 			getWishlist(id)
 			.then((wishlist) => {
-				console.log(wishlist)
-                const child = children.find((child) => child.id === wishlist.child_profile_id)
 				setFormState({
+					wishlist: wishlist,
 					name: wishlist.name,
-                    child_profile_id: child.id
 				})
-
 			})
             .catch((error) => console.log(error));
-	}},[])
+	}},[id, children])
+
 
 	function handleChange(event) {
 		setFormState({
@@ -39,11 +38,12 @@ export default function UpdateWishlist() {
 	}
 	function handleClick(event) {
 		event.preventDefault()
+		console.log(formState.wishlist.child_profile_id)
 		if(id) {
 			updateWishlist( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWishlist', data: {id: id, ...formState}})
-				history.push(`/child/${id}`)
+				history.push(`/child/${formState.wishlist.child_profile_id}`)
 			})
 		}
 	}

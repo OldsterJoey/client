@@ -14,7 +14,8 @@ export default function NewWish() {
 
 	const initialFormState = {
 			name: '',
-			wish_list_id: query.get("wish_list_id")
+			wish_list_id: query.get("wish_list_id"),
+			child_id: query.get('child_id')
 	}
 
 	console.log(query)
@@ -22,6 +23,7 @@ export default function NewWish() {
 	let history = useHistory()
 	const {dispatch} = useGlobalState()
 	const id = initialFormState.wish_list_id
+	const childId = initialFormState.child_id
 
 
 
@@ -37,7 +39,7 @@ export default function NewWish() {
 		createWish({...formState})
 		.then((wish) => {
 			dispatch({type: 'addWish', data: wish})
-			history.push(`/child/${id}`)
+			history.push(`/child/${childId}`)
 		})
 		.catch((error) => console.log(error))
 

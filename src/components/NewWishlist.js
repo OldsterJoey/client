@@ -36,7 +36,6 @@ export default function NewWishlist() {
 		event.preventDefault()
 		createWishlist({...formState})
 		.then((wishlist) => {
-			debugger
 			dispatch({type: 'addWishlist', data: wishlist})
 			history.push(`/child/${id}`)
 		})
