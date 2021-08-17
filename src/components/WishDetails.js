@@ -9,34 +9,31 @@ export default function WishesDetails(props) {
 
 	const {dispatch} = useGlobalState()
 	const {id} = useParams()
-	let history = useHistory()
-
-	const {wishes, wishlistId} = props
+	const {wishlist, wishlistId, wishes, childId} = props
 	console.log(props)
 
-	// const wishes=wishlist.wishes
+	let history = useHistory()
 
 	if (wishes.length === 0) return (
 	<div>
 		<p>No wishes have been saved yet</p>
-		<Link to={`/wishes/new?wish_list_id=${wishlistId}`}>Create Wishes</Link>
+		<Link to={`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`}>Create Wishes</Link>
 	</div>
 	)	
 	console.log(wishes)
 
     // const wishes = wishlist && wishlist.wishes //review
 
-    const wish = wishes.find(wish => wish.id === parseInt(id))
 
-	function handleDelete() {
-		deleteWish(wish.id)
-		// deleteWishes(wishlist[wishes]) - is this the right way to delete the dependent wishes?
+	function handleDelete(wishId) {
+		console.log(wishId)
+		deleteWish(wishId)
 		.then(() => {
-			dispatch({type: 'deleteWish', data: id})
-			history.push(`/child/${id}}`) 
-			// not sure if that is the right way to get back to the child who used to have that wishlist
+			dispatch({type: 'deleteWish', data: wishId})
+			history.push(`/child/${childId}}`) 
 		})
 	}
+
 
     return (
         <div>
@@ -49,17 +46,15 @@ export default function WishesDetails(props) {
 								<p>{wish.name}</p>
 								<Panel>
 									<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wish</Button>
-									<Button onClick={handleDelete}>Delete Wish</Button>
+									<Button onClick={() => handleDelete(wish.id)}>Delete Wish</Button>
 
 								</Panel>
 								</li>
 							</ol>
-
-
 					</>
 				)
 			})}
-			<Link to={`/wishes/new?wish_list_id=${id}`}>Add New Wish</Link>
+			<Link to={`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`}>Add New Wish</Link>
 
         </div>
     )

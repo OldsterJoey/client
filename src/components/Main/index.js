@@ -12,6 +12,7 @@ export default function Main({history}) {
 	const {store, dispatch} = useGlobalState()
     const {children, loggedInUser} = store
 	// const {id} = useParams()
+    console.log(loggedInUser.username)
 
     useEffect(() => {
         getChildren()
@@ -50,15 +51,20 @@ export default function Main({history}) {
                         {/* <p>{child.user_id}</p> */}
                         <MainH2>Please, select who is using the app today?</MainH2>
 
-                        {/* {loggedInUser === child.user_id &&  */}
 
                         <MainWrapper>
                             
                             {children.map((child,index) => {
                             return (
+                                <div>
+                                {child.user_id && 
+
                                 <Wrapper index={index} key={child.id} >
                                     <StyledButton key={child.id} onClick={() => history.push(`/child/${child.id}`)}>{child.name}</StyledButton>
                                 </Wrapper>
+
+                                }
+                                </div>
                                     )
                                 })}
                             <Wrapper>

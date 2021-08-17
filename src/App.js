@@ -34,6 +34,8 @@ function App() {
 	}
 	const [store, dispatch] = useReducer(stateReducer,initialState)
 
+
+
   useEffect(() => {
     getChildren()
     .then((children) => dispatch({type: 'setChildren', data: children}))
@@ -47,6 +49,7 @@ function App() {
     .then((wishes) => dispatch({type: 'setWishes', data: wishes}))
     .catch((error) => console.log(error))
   },[])
+
 
   return (
     <div>
@@ -63,10 +66,11 @@ function App() {
             <Route exact path="/children/new" component={NewChild}></Route>
 
             <Route exact path="/wishlist/new" component={NewWishlist}></Route>
-            <Route exact path="/wishlist/update/:id" component={UpdateWishlist}></Route>
+            <Route exact path="/wishlist/update/:id" render={() => <UpdateWishlist /> }></Route>
             <Route exact path="/wishlist/:id" component={WishlistDetails}></Route>
 
-            <Route exact path="/wish/update/:id" component={UpdateWish}></Route>
+            <Route exact path="/wish/update/:id" render={() => <UpdateWish /> } />
+            <Route exact path="/wishes" component={WishesDetails}></Route>
             <Route exact path="/wishes/new" component={NewWish}></Route>
             <Route exact path="/wishes" component={WishesDetails}></Route>
 

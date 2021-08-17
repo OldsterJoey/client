@@ -9,7 +9,6 @@ export default function Children(history) {
 	const {store} = useGlobalState()
 	const {children} = store
 	console.log(children)
-	if(!children) return null
 	if(!children) return (
         <div>
             <p>No children have been saved yet</p>
@@ -22,11 +21,9 @@ export default function Children(history) {
 		<div>
 			{children.map((child,index) => {
 				return (
-					// <StyledLink key={child.id} to={`/children/${child.id}`}>
 						<Child key={child.id} index={index} child={child} wishlist={child.wish_list}>
 							{child.name}
 						</Child>
-					// </StyledLink>
 				)
 			})}
 		</div>

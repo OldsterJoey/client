@@ -22,6 +22,7 @@ export default function ChildDetails() {
 
 	if (!child) return null
 	function handleDelete() {
+		console.log(id)
 		deleteChild(id)
 		.then(() => {
 			dispatch({type: 'deleteChild', data: id})

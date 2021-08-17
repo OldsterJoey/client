@@ -11,20 +11,31 @@ function useQuery() {
 
 export default function NewWish() {
 	let query = useQuery();
+<<<<<<< HEAD
 	console.log(query)
+
+	const initialFormState = {
+			name: '',
+			wish_list_id: query.get("wish_list_id")
+=======
 
 	const initialFormState = {
 			name: '',
 			wish_list_id: query.get("wish_list_id"),
 			child_id: query.get('child_id')
+>>>>>>> main
 	}
 
 	console.log(query)
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	const {dispatch} = useGlobalState()
+<<<<<<< HEAD
+	const wishlistId = initialFormState.wish_list_id
+=======
 	const id = initialFormState.wish_list_id
 	const childId = initialFormState.child_id
+>>>>>>> main
 
 
 
@@ -40,7 +51,11 @@ export default function NewWish() {
 		createWish({...formState})
 		.then((wish) => {
 			dispatch({type: 'addWish', data: wish})
+<<<<<<< HEAD
+			history.push(`/wishlist/${wishlistId}`)
+=======
 			history.push(`/child/${childId}`)
+>>>>>>> main
 		})
 		.catch((error) => console.log(error))
 
