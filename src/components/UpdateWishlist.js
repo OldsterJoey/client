@@ -26,7 +26,7 @@ export default function UpdateWishlist(props) {
 				})
 			})
             .catch((error) => console.log(error));
-	}},[id, children])
+	}},[id])
 
 
 	function handleChange(event) {
@@ -36,6 +36,7 @@ export default function UpdateWishlist(props) {
 		})
 		
 	}
+	console.log(formState)
 	function handleClick(event) {
 		event.preventDefault()
 		console.log(formState.wishlist.child_profile_id)

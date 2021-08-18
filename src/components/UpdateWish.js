@@ -1,36 +1,45 @@
 import React, {useState, useEffect} from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import {useHistory, useParams, useLocation} from 'react-router-dom'
 import {Label, BigTextInput, Button} from './Styled'
 import {getWish, updateWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
 
-export default function UpdateWish() {
+
+function useQuery() {
+	return new URLSearchParams(useLocation().search);
+  }
+  
+export default function UpdateWish(props) {
+	let query = useQuery();
+	// Setting up initial state
 	const initialFormState = {
-		name: '',
-		wish_list_id: ''    
-	}
+		wish: {
+			name: '',
+		},
+		child_id: query.get('child_id')
+	  }
+	console.log(initialFormState)
+
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	let {id} = useParams()
-	const {store, dispatch} = useGlobalState()
-	const {wishes, wishlists} = store;
+	const  {dispatch} = useGlobalState()
+
 
 	useEffect(() => {
 		if(id) {
 			getWish(id)
 			.then((wish) => {
-                const wishlist = wishlists.find((wishlist) => wishlist.id === wish.wish_list_id)
 				setFormState({
-					name: wish.name,
-                    wish_list_id: wishlist.id
-				})
+					wish: wish,
+					name: wish.name})
+		})
+        .catch((error) => console.log(error));
 
-			})
-            .catch((error) => console.log(error));
-	}},[])
-
-	const wish = wishes.find((wish) => wish.id = parseInt(id))
-	const wishlistId = wish.wish_list_id
+	}},[id])
+	console.log(formState)
+	const childId = initialFormState.child_id
+	// const wishlistId = wish.wish_list_id
 
 	function handleChange(event) {
 		setFormState({
@@ -39,23 +48,28 @@ export default function UpdateWish() {
 		})
 		
 	}
+
+
 	function handleClick(event) {
 		event.preventDefault()
+		console.log(formState.child_id)
+
 		if(id) {
 			updateWish( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWish', data: {id: id, ...formState}})
-				history.push(`/child/${id}`)
+				history.push(`/child/${childId}`)
 			})
 		}
 	}
 	return (
 
-		<div key={wish.index}>
+		<div>
 			<Label>Wish:</Label>
-			<BigTextInput key={wish.id} type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>Update Wishes</Button>
+				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
+				<Button onClick={handleClick}>Update Wishes</Button>
 
 		</div>
+
 	)
 }

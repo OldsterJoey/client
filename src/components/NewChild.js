@@ -49,7 +49,7 @@ export default function NewChild() {
 			.then((child) => {
 				console.log(child)
 				dispatch({type: 'addChild', data: child})
-				history.push(`/child/${id}`)
+				history.push(`/main`)
 			})
 			.catch((error) => console.log(error))
 		}

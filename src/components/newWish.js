@@ -48,7 +48,7 @@ export default function NewWish() {
 	return (
 		<form className = "wishNew">
 			<Label>Wish:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
+			<BigTextInput key={id} type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
 			<Button onClick={handleClick}>Create a new Wish</Button>
 		</form>
 	)
