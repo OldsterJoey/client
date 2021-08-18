@@ -24,14 +24,16 @@ export default function WishesDetails(props) {
 
     // const wishes = wishlist && wishlist.wishes //review
 
-
 	function handleDelete(wishId) {
-		console.log(wishId)
+		console.log(childId)
 		deleteWish(wishId)
 		.then(() => {
 			dispatch({type: 'deleteWish', data: wishId})
-			history.push(`/child/${childId}}`) 
+			history.push(`/child/${childId}`);
+			window.location.reload(true); 
 		})
+		.catch((error) => console.log(error))
+
 	}
 
 
@@ -45,16 +47,20 @@ export default function WishesDetails(props) {
 								<li key={index} wish={wish}>
 								<p>{wish.name}</p>
 								<Panel>
-									<Button onClick={() => history.push(`/wish/update/${wish.id}`)}>Update Wish</Button>
+									<Button onClick={() => history.push(`/wish/update/${wish.id}?child_id=${childId}`)}>Update Wish</Button>
 									<Button onClick={() => handleDelete(wish.id)}>Delete Wish</Button>
-
 								</Panel>
 								</li>
 							</ol>
 					</>
 				)
 			})}
-			<Link to={`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`}>Add New Wish</Link>
+	
+			{
+				wishes.length < 3 &&
+					<Link to={`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`}>Add New Wish</Link>
+			}
+
 
         </div>
     )
