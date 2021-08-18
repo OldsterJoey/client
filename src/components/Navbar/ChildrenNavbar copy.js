@@ -12,7 +12,7 @@ import {
     NavBtnLink, NavBtn
 } from './NavbarElements'
 
-export default function Navbar(){
+export default function ChildrenNavbar(){
 	const {store,dispatch} = useGlobalState()
 	const {loggedInUser} = store
     let history = useHistory()

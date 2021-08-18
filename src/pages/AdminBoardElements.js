@@ -9,8 +9,7 @@ export const MainContainer = styled.section`
     scroll-behavior: smooth;
     /* scroll-snap-type: y mandatory; */
     background-color: #54376E;
-    padding-top: 80px;
-    height: 890px;
+    height: 1100px;
 
 `
 
@@ -123,4 +122,17 @@ export const Wrapper = styled.div`
     padding: 10px;
     text-align: center;
     vertical-align: middle; */
+`
+export const Container = styled.div`
+    min-height: 1000px;
+    background-color: #54376E;
+    width: 100vw;
+
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
 `
