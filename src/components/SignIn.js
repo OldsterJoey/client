@@ -3,7 +3,6 @@ import React, {useState} from 'react'
 import {signIn} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 import { Container, FormWrap, FormContent, Form, FormHeading, FormLabel, FormInput, FormButton } from './Styled'
-import SmallNavbar from '../components/Navbar/SmallNavbar'
 
 export default function SignIn({history}) {
 	const initialFormState = {
@@ -34,7 +33,6 @@ export default function SignIn({history}) {
 	}
 	return (
 		<Container id='signIn'>
-			<SmallNavbar />
 			<FormWrap>
 				<FormContent>
 					<Form className='registration' >

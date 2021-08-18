@@ -3,7 +3,7 @@ import {useHistory, useParams} from 'react-router-dom'
 import {Container, Form, FormWrap, FormLabel, FormContent, FormInput, FormHeading, Button, FormButton} from './Styled'
 import {createChild, getChild, updateChild} from '../services/childrenServices'
 import {useGlobalState} from '../utils/stateContext'
-import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
+import ChildrenNavbar from './Navbar/ParentNavbar'
 
 export default function NewChild() {
 	const initialFormState = {

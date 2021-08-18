@@ -37,7 +37,6 @@ export default function SignUp() {
 	}
 	return (
 		<Container id='signUp'>
-			<SmallNavbar />
 			<FormWrap>
 				<FormContent>
 					<Form className='registration' >

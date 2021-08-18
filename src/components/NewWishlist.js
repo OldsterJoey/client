@@ -3,7 +3,7 @@ import {useHistory, useLocation} from 'react-router-dom'
 import {Container, FormWrap, FormHeading, Form, FormInput, FormLabel, FormContent, Button} from './Styled'
 import {createWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
-import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
+import ChildrenNavbar from './Navbar/ParentNavbar'
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);

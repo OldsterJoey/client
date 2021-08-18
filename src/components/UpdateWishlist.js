@@ -3,7 +3,7 @@ import {useParams, useHistory} from 'react-router-dom'
 import {Container, FormHeading, FormWrap, Form, FormInput, FormLabel, FormContent, Button} from './Styled'
 import {getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
-import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
+import ChildrenNavbar from './Navbar/ParentNavbar'
 
 export default function UpdateWishlist(props) {
 	const initialFormState = {
