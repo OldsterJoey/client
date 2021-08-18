@@ -54,7 +54,7 @@ export default function NewWishlist() {
 
 							<FormLabel>Wishlist:</FormLabel>
 							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
-							<Button onClick={handleClick}>Create Wishlist</Button>
+							<Button style={{width: '50px'}}onClick={handleClick}>Create Wishlist</Button>
 					</Form>
 				</FormContent>
 			</FormWrap>

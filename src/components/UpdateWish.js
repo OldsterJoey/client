@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams, useLocation} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Container, Form, FormWrap, FormLabel, FormContent, FormInput, FormHeading, Button, FormButton} from './Styled'
 import {getWish, updateWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 
 function useQuery() {
@@ -65,9 +66,19 @@ export default function UpdateWish(props) {
 	return (
 
 		<div>
-			<Label>Wish:</Label>
-				<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-				<Button onClick={handleClick}>Update Wishes</Button>
+			<Container>
+				<ChildrenNavbar />
+				<FormWrap>
+					<FormContent>
+						<Form>						
+							<FormHeading>Changed your mind? No worries! Update your wish</FormHeading>
+							<FormLabel>Wish:</FormLabel>
+							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
+							<Button style={{width: '120px'}}onClick={handleClick}>Update Wishes</Button>
+						</Form>
+					</FormContent>
+				</FormWrap>
+			</Container>
 
 		</div>
 

@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {useHistory, useLocation} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Container, Form, FormWrap, FormLabel, FormContent, FormInput, FormHeading, Button, FormButton} from './Styled'
 import {createWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 
 function useQuery() {
@@ -47,10 +48,19 @@ export default function NewWish() {
 	}
 	console.log("rendering New Wish")
 	return (
-		<form className = "wishNew">
-			<Label>Wish:</Label>
-			<BigTextInput key={id} type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>Create a new Wish</Button>
-		</form>
+	<Container>
+		<ChildrenNavbar />
+		<FormWrap>
+			<FormContent>
+				<Form className='wishForm'>
+				<FormHeading>Tell us what you wish for!</FormHeading>
+
+					<FormLabel>Wish:</FormLabel>
+					<FormInput key={id} type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
+					<Button style={{width: '140px'}}onClick={handleClick}>Create a new Wish</Button>
+				</Form>
+			</FormContent>
+		</FormWrap>
+	</Container>
 	)
 }

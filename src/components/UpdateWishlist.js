@@ -65,7 +65,7 @@ export default function UpdateWishlist(props) {
 
 							<FormLabel>Wishlist:</FormLabel>
 							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
-							<Button onClick={handleClick}>Update</Button>
+							<Button style={{width: '170px'}}onClick={handleClick}>Update Wishlist Name</Button>
 						</Form>
 					</FormContent>
 				</FormWrap>
