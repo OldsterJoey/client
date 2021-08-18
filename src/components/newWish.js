@@ -3,7 +3,7 @@ import {useHistory, useLocation} from 'react-router-dom'
 import {Container, Form, FormWrap, FormLabel, FormContent, FormInput, FormHeading, Button, FormButton} from './Styled'
 import {createWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
-import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
+import ChildrenNavbar from './Navbar/ParentNavbar'
 
 
 function useQuery() {

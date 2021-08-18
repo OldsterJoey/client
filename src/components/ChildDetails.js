@@ -5,7 +5,7 @@ import {Button, Card, CardWrapper, Text, Container, ContentWrapper} from './Styl
 import {useGlobalState} from '../utils/stateContext'
 import {deleteChild} from '../services/childrenServices'
 import WishlistDetails from './WishlistDetails'
-import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
+import ChildrenNavbar from './Navbar/ParentNavbar'
 
 export default function ChildDetails() {
 	const [child,setChild] = useState(null)

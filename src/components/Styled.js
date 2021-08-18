@@ -180,6 +180,33 @@ export const FormContent = styled.div`
     }
 `;
 
+// styling for children cards
+export const ChildCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    `
+    export const ChildCardWrapper = styled.div`
+	margin: 0 auto;
+	background: #fff;
+    padding: 40px;
+	display: flex;
+    width: 200px;
+    height: 200px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: left;
+	border-radius: 10px;
+	max-width: 640px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	transition: all 0.2 ease-in-out;
+	&:hover ${Button} {
+		display: inline;
+		transition: 250ms ease-in-out, transform 150ms ease;
+  }
+`
+	
 // styling for cards
 export const Card = styled.div`
 	display: flex;
@@ -225,3 +252,42 @@ export const ContentWrapper = styled.div`
 	display: grid;
     grid-template-columns: 1fr ;
 	`
+
+export const ListingsWrapper = styled.div`
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-gap: 50px;
+padding: 0 50px;
+justify-content: space-between;
+
+
+@media screen and (max-width: 1340px) {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+
+}
+`
+
+export const ChildrenCardsWrapper = styled.div`
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+    grid-gap: 16px;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        /* padding: 0 20px; */
+    }
+`

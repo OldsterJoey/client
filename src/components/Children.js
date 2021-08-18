@@ -3,7 +3,7 @@ import React from 'react'
 // import styled from 'styled-components'
 import Child from './Child'
 import {useGlobalState} from '../utils/stateContext'
-import {Button} from './Styled'
+import {ChildrenCardsWrapper, Button, ChildCard, ChildCardWrapper} from './Styled'
 
 export default function Children(history) {
 	const {store} = useGlobalState()
@@ -19,13 +19,26 @@ export default function Children(history) {
 	return  (
 		<>
 		<div>
+			<ChildrenCardsWrapper>
+
+
+
 			{children.map((child,index) => {
 				return (
+				<>
+				<ChildCard>
+					<ChildCardWrapper>
 						<Child key={child.id} index={index} child={child} wishlist={child.wish_list}>
 							{child.name}
 						</Child>
+					</ChildCardWrapper>
+				</ChildCard>
+				</>
 				)
 			})}
+
+
+			</ChildrenCardsWrapper>
 		</div>
 		</>
 	)
