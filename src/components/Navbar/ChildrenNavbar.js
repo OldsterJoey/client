@@ -56,9 +56,6 @@ export default function Navbar(){
                             <NavBtnLink to="/main" >Home</NavBtnLink>
                         </NavBtn>
                         <NavBtn>
-                            <NavBtnLink to="/children/new" >Add New Child</NavBtnLink>
-                        </NavBtn>
-                        <NavBtn>
                             <NavBtnLink onClick={handleSignOut}>Sign out</NavBtnLink>
                         </NavBtn>
                     </NavMenu>

@@ -10,20 +10,20 @@ export const MainContainer = styled.section`
     /* scroll-snap-type: y mandatory; */
     background-color: #54376E;
     padding-top: 80px;
+    height: 890px;
+
 `
 
 export const MainContent = styled.div`
     display: grid;
     z-index: 1;
-    height: 890px;
     width: 100%;
     margin-bottom: 100px;
-    max-width: 800px;
+    max-width: 600px;
+    height: 600px;
     margin-right: auto;
     margin-left: auto; 
-    justify-content: space-evenly;
     @media screen and (max-width: 480px){
-        height: 960px;
         width: 90%;
     }
     @media screen and (max-width: 320px){
@@ -39,10 +39,10 @@ export const MainWrapper = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
+    padding: 0;
     grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
+    align-items: flex-start;
     grid-gap: 16px;
-    padding: 0 50px;
 
     @media screen and (max-width: 900px) {
         grid-template-columns: 1fr 1fr;
@@ -59,6 +59,7 @@ export const MainHeading = styled.h1`
     color: #fff;
     font-size: 2rem;
     text-align: center;
+    padding:0;
     @media screen and (max-width: 780px) {
         font-size: 40px;
     }

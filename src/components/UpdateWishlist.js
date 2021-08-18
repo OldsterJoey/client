@@ -11,12 +11,10 @@ export default function UpdateWishlist(props) {
 	}
 
 	console.log(props)
-	const {child} = props
 	const [formState,setFormState] = useState(initialFormState)
 	let history = useHistory()
 	const {id} = useParams()
-	const {dispatch, store} = useGlobalState()
-	const {children} = store;
+	const {dispatch} = useGlobalState()
 
 	// const child = children.find((wish) => wish.id = parseInt(id))
 

@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import {signUp} from '../services/authServices'
 import {useGlobalState} from '../utils/stateContext'
 import { Container, FormWrap, FormContent, Form, FormHeading, FormLabel, FormInput, FormButton } from './Styled'
-
+import SmallNavbar from '../components/Navbar/SmallNavbar'
 
 export default function SignUp() {
 	const initialFormState = {
@@ -37,6 +37,7 @@ export default function SignUp() {
 	}
 	return (
 		<Container id='signUp'>
+			<SmallNavbar />
 			<FormWrap>
 				<FormContent>
 					<Form className='registration' >

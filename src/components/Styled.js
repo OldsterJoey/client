@@ -8,8 +8,25 @@ export const Span = styled.span`
 `
     
 export const Button = styled(Span)`
-	cursor: pointer;
-    color: #008080;
+	padding: 0;
+	float: right;
+  	border: 0.0625rem solid rgb(105, 118, 132);
+  	padding: 12px 12px;
+  	margin: 0;
+  	text-decoration: none;
+  	background: #fff;
+  	color: #697684;
+  	font-family: museo-sans, sans-serif;
+  	font-size: 1rem;
+  	line-height: 1;
+  	cursor: pointer;
+  	border-radius: 3px;
+  	transition: background 250ms ease-in-out, transform 150ms ease;
+  &:hover {
+      transition: 300ms ease-in-out;
+      background-color: #E4002B;
+      color: #fff;
+	  }
 `
 export const Label = styled.span `
 	font-family: Arial,sans-serif;
@@ -35,7 +52,7 @@ export const BigTextInput = styled(Input) `
 // Styling for log in and sign up
 
 export const Container = styled.div`
-    min-height: 1200px;
+    min-height: 1100px;
     background-color: #54376E;
     width: 100vw;
 
@@ -162,3 +179,49 @@ export const FormContent = styled.div`
         padding: 5px;
     }
 `;
+
+// styling for cards
+export const Card = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+`
+// Wrapper defining a column view
+export const CardWrapper = styled.div`
+	margin: 0 auto;
+	background: #fff;
+    padding: 40px;
+	display: flex;
+    width: 600px;
+    height: 600px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: left;
+	border-radius: 10px;
+	max-width: 640px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	transition: all 0.2 ease-in-out;
+	&:hover ${Button} {
+		display: inline;
+		transition: 250ms ease-in-out, transform 150ms ease;
+  }
+`
+export const Text = styled.p`
+    font-family: museo-sans, sans-serif;
+
+	font-weight: 500;
+	text-align: left;
+`
+
+export const ContentWrapper = styled.div`
+	padding: 16px 24px;
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+	`
+    export const ContentWrapperWishes = styled.div`
+	padding: 16px 24px;
+	display: grid;
+    grid-template-columns: 1fr ;
+	`

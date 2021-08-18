@@ -1,10 +1,11 @@
 import React,{ useState,useEffect} from 'react'
 import {useParams,useHistory} from 'react-router-dom'
 import {getChild} from '../services/childrenServices'
-import {Button, Panel} from './Styled'
+import {Button, Card, CardWrapper, Text, Container, ContentWrapper} from './Styled'
 import {useGlobalState} from '../utils/stateContext'
 import {deleteChild} from '../services/childrenServices'
 import WishlistDetails from './WishlistDetails'
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 export default function ChildDetails() {
 	const [child,setChild] = useState(null)
@@ -31,16 +32,30 @@ export default function ChildDetails() {
 	}
 	return (
 		<div>
-			<p>Author: {child.name}</p>	
+			<Container>
+				<ChildrenNavbar />
+				<Card>
+					<CardWrapper>
+						<ContentWrapper>
+						<Text>Author: {child.name}</Text>	
 
-			{loggedInUser  &&
-				<Panel>
-					<Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button>
-					<Button onClick={handleDelete}>Delete</Button>
-				</Panel>
-			}
+						{loggedInUser  &&
+						<div>
+							<Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button>
+							<Button onClick={handleDelete}>Delete</Button>
+						</div>
+						}
+						</ContentWrapper>
 
-			<WishlistDetails child={child} childId={child.id} wishlist={child.wish_list}/>
+
+					<WishlistDetails child={child} childId={child.id} wishlist={child.wish_list}/>
+
+					</CardWrapper>
+
+				</Card>
+
+			</Container>
+
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Panel,Button} from './Styled'
+import {Panel,Button,Text, ContentWrapper} from './Styled'
 import {deleteWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
 import {Link} from 'react-router-dom'
@@ -31,12 +31,15 @@ export default function WishlistDetails(props) {
 			{wishlist ? 
 			<>
 			<div>
-				<p>Wishlist: {wishlist.name}</p>
+				<ContentWrapper>
+				<Text>Wishlist: {wishlist.name}</Text>
 
 				<Panel>
 					<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}&child_profile_id=${childId}`)}>Update Wishlist</Button>
 					<Button onClick={handleDelete}>Delete Wishlist</Button>
 				</Panel>	
+
+				</ContentWrapper>
 
 				<WishDetails   
 				wishlist={wishlist} 

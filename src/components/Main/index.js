@@ -4,7 +4,6 @@ import {getChildren} from '../../services/childrenServices';
 import {getWishlists} from '../../services/wishlistsServices';
 import {getWishes} from '../../services/wishesServices';
 
-import { signOut } from '../../services/authServices'
 import {MainContainer, MainContent, MainH1, MainH2, MainWrapper, StyledButton, Wrapper} from './MainElements'
 import Navbar from '../../components/Navbar'
 
@@ -12,7 +11,6 @@ export default function Main({history}) {
 	const {store, dispatch} = useGlobalState()
     const {children, loggedInUser} = store
 	// const {id} = useParams()
-    console.log(loggedInUser.username)
 
     useEffect(() => {
         getChildren()
@@ -26,20 +24,11 @@ export default function Main({history}) {
     getWishes()
         .then((wishes) => dispatch({type: 'setWishes', data: wishes}))
         .catch((error) => console.log(error))
-    },[])
+    },[dispatch])
 
     const [isOpen, setIsOpen] = useState(false) 
     const toggle = () => {
         setIsOpen(!isOpen)
-    }
-    function handleSignOut(event){
-        event.preventDefault()
-        signOut(loggedInUser)
-        .then(() => {
-            dispatch({type: 'setLoggedInUser', data: null })
-            dispatch({type: 'setToken', data: null })
-			history.push(`/`) 
-        })
     }
     
     return (
