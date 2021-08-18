@@ -1,6 +1,6 @@
 import React from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Panel,Button, Text,ContentWrapperWishes} from './Styled'
+import {Text,Button, ContentWrapperWishes, ContentWrapper} from './Styled'
 import {deleteWish} from '../services/wishesServices'
 import {useGlobalState} from '../utils/stateContext'
 import {Link} from 'react-router-dom'
@@ -15,10 +15,13 @@ export default function WishesDetails(props) {
 	let history = useHistory()
 
 	if (wishes.length === 0) return (
-	<div>
-		<p>No wishes have been saved yet</p>
-		<Link to={`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`}>Create Wishes</Link>
-	</div>
+	<ContentWrapper>
+		<Text>No wishes have been saved yet</Text>
+		<div>
+			<Button onClick={() => history.push(`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`)}>Create Wishes</Button>
+
+		</div>
+	</ContentWrapper>
 	)	
 	console.log(wishes)
 
@@ -48,10 +51,11 @@ export default function WishesDetails(props) {
 							<ul>
 								<li key={index} wish={wish}>
 								<Text>{wish.name}</Text>
-								<Panel>
-									<Button onClick={() => history.push(`/wish/update/${wish.id}?child_id=${childId}`)}>Update Wish</Button>
+								<div>
 									<Button onClick={() => handleDelete(wish.id)}>Delete Wish</Button>
-								</Panel>
+									<Button onClick={() => history.push(`/wish/update/${wish.id}?child_id=${childId}`)}>Update Wish</Button>
+
+								</div>
 								</li>
 							</ul>
 
@@ -59,11 +63,14 @@ export default function WishesDetails(props) {
 				)
 			})}
 						</ContentWrapperWishes>
+				<div>
 
 			{
 				wishes.length < 3 &&
+
 				<Button style={{alignItem: 'center'}}onClick={() => history.push(`/wishes/new?wish_list_id=${wishlistId}&child_id=${childId}`)}>Add New Wish</Button>
 			}
+				</div>
 
 
         </div>

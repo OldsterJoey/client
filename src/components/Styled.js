@@ -24,8 +24,8 @@ export const Button = styled(Span)`
   	transition: background 250ms ease-in-out, transform 150ms ease;
   &:hover {
       transition: 300ms ease-in-out;
-      background-color: #E4002B;
-      color: #fff;
+      background: #4264DD;
+        color: #fff;
 	  }
 `
 export const Label = styled.span `
@@ -52,7 +52,7 @@ export const BigTextInput = styled(Input) `
 // Styling for log in and sign up
 
 export const Container = styled.div`
-    min-height: 1100px;
+    min-height: 1000px;
     background-color: #54376E;
     width: 100vw;
 

@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {useHistory, useLocation} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Container, FormWrap, FormHeading, Form, FormInput, FormLabel, FormContent, Button} from './Styled'
 import {createWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
-
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -45,10 +45,22 @@ export default function NewWishlist() {
 	console.log("rendering New Wishlist")
 	return (
 		<div>
+			<Container>
+				<ChildrenNavbar />
+				<FormWrap>
+					<FormContent>
+						<Form>
+						<FormHeading>Here you can create your wishlist:</FormHeading>
 
-			<Label>Wishlist:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>Create Wishlist</Button>
+							<FormLabel>Wishlist:</FormLabel>
+							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
+							<Button onClick={handleClick}>Create Wishlist</Button>
+					</Form>
+				</FormContent>
+			</FormWrap>
+
+		</Container>
+
 		</div>
 	)
 }

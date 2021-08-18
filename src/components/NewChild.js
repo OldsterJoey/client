@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Container, Form, FormWrap, FormLabel, FormContent, FormInput, FormHeading, Button, FormButton} from './Styled'
 import {createChild, getChild, updateChild} from '../services/childrenServices'
 import {useGlobalState} from '../utils/stateContext'
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 export default function NewChild() {
 	const initialFormState = {
@@ -56,9 +57,19 @@ export default function NewChild() {
 	}
 	return (
 		<div>
-			<Label>Child:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+			<Container>
+			<ChildrenNavbar />
+				<FormWrap>
+					<FormContent>
+						<Form className='childNameForm' >
+							<FormHeading>Here you can create or update your name:</FormHeading>
+							<FormLabel>Child Name:</FormLabel>
+							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
+							<Button style={{width: '50px'}}onClick={handleClick}>{id ? 'Update' : 'Create'}</Button>
+					</Form>
+					</FormContent>
+				</FormWrap>
+			</Container>
 		</div>
 	)
 }

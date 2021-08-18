@@ -41,8 +41,8 @@ export default function ChildDetails() {
 
 						{loggedInUser  &&
 						<div>
-							<Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button>
 							<Button onClick={handleDelete}>Delete</Button>
+							<Button onClick={() => history.push(`/child/update/${id}`)}>Update</Button>
 						</div>
 						}
 						</ContentWrapper>

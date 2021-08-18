@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
-import {Label, BigTextInput, Button} from './Styled'
+import {Container, FormHeading, FormWrap, Form, FormInput, FormLabel, FormContent, Button} from './Styled'
 import {getWishlist, updateWishlist} from '../services/wishlistsServices'
 import {useGlobalState} from '../utils/stateContext'
+import ChildrenNavbar from '../components/Navbar/ChildrenNavbar'
 
 export default function UpdateWishlist(props) {
 	const initialFormState = {
@@ -55,10 +56,20 @@ export default function UpdateWishlist(props) {
 
 	return (
 		<div>
+			<Container>
+				<ChildrenNavbar />
+				<FormWrap>
+					<FormContent>
+						<Form>						
+							<FormHeading>Here you can update your wishlist:</FormHeading>
 
-			<Label>Wishlist:</Label>
-			<BigTextInput type='text' name='name' value={formState.name} onChange={handleChange}></BigTextInput>
-			<Button onClick={handleClick}>Update</Button>
+							<FormLabel>Wishlist:</FormLabel>
+							<FormInput type='text' name='name' value={formState.name} onChange={handleChange}></FormInput>
+							<Button onClick={handleClick}>Update</Button>
+						</Form>
+					</FormContent>
+				</FormWrap>
+			</Container>
 		</div>
 	)
 }

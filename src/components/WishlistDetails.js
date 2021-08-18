@@ -54,7 +54,7 @@ export default function WishlistDetails(props) {
 			// <Fragment wishlist={wishlist} wishlistId={wishlist.id} child={child} childId={childId}>
 			<div>
 				<p>No wishlist has been saved yet</p>
-				<Link to={`/wishlist/new?child_profile_id=${childId}`}>Create Wishlist</Link>
+				<Button onClick={() => history.push(`/wishlist/new?child_profile_id=${childId}`)}>Create Wishlist</Button>
 				</div>
 		
 			// </Fragment>
