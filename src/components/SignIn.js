@@ -38,10 +38,10 @@ export default function SignIn({history}) {
 					<Form className='registration' >
 						<FormHeading>Let's first check if you have an account already. Please, use your email and password to log in. If you haven't registered yet, you can Sign Up.</FormHeading>
 						<FormLabel>Email:</FormLabel>
-						<FormInput type='email' name='email' value={formState.username} onChange={handleChange}></FormInput>
+						<FormInput data-cy="signin-email" type='email' name='email' value={formState.username} onChange={handleChange}></FormInput>
 						<FormLabel>Password:</FormLabel>
-						<FormInput type='password' name='password' value={formState.password} onChange={handleChange}></FormInput>
-						<FormButton onClick={handleSubmit}>Log In</FormButton>
+						<FormInput data-cy="signin-password" type='password' name='password' value={formState.password} onChange={handleChange}></FormInput>
+						<FormButton data-cy="signin-button" onClick={handleSubmit}>Log In</FormButton>
 						<FormButton onClick={() => history.push('/sign_up')}>Sign Up</FormButton>
 					</Form>
 				</FormContent>

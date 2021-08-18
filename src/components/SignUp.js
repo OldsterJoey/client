@@ -42,14 +42,14 @@ export default function SignUp() {
 					<Form className='registration' >
 					<FormHeading>Sign UP</FormHeading>
 								<FormLabel>Username:</FormLabel>
-								<FormInput type="text" name='username' value={formState.username} onChange={handleChange}></FormInput>
+								<FormInput data-cy="signup-username" type="text" name='username' value={formState.username} onChange={handleChange}></FormInput>
 								<FormLabel>Email:</FormLabel>
-								<FormInput type='email' name='email' value={formState.email} onChange={handleChange}></FormInput>
+								<FormInput data-cy="signup-email" type='email' name='email' value={formState.email} onChange={handleChange}></FormInput>
 								<FormLabel>Password:</FormLabel>
-								<FormInput type='password' name='password' value={formState.password} onChange={handleChange}></FormInput>
+								<FormInput data-cy="signup-password" type='password' name='password' value={formState.password} onChange={handleChange}></FormInput>
 								<FormLabel>Password Confirmation:</FormLabel>
-								<FormInput type='password' name='password_confirmation' value={formState.password_confirmation} onChange={handleChange}></FormInput>
-								<FormButton onClick={handleRegister}>Sign Up</FormButton>
+								<FormInput data-cy="signup-passwordConfirmation" type='password' name='password_confirmation' value={formState.password_confirmation} onChange={handleChange}></FormInput>
+								<FormButton data-cy="signup-button" onClick={handleRegister}>Sign Up</FormButton>
 					</Form>
 				</FormContent>
 			</FormWrap>
