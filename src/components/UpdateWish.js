@@ -58,11 +58,7 @@ export default function UpdateWish(props) {
 			updateWish( {id: id, ...formState})
 			.then(() => {
 				dispatch({type: 'updateWish', data: {id: id, ...formState}})
-<<<<<<< HEAD
-				history.push(`/wishlist/${wishlistId}`)
-=======
 				history.push(`/child/${childId}`)
->>>>>>> main
 			})
 		}
 	}

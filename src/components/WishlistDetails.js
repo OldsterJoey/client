@@ -34,7 +34,7 @@ export default function WishlistDetails(props) {
 				<p>Wishlist: {wishlist.name}</p>
 
 				<Panel>
-					<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}`)}>Update Wishlist</Button>
+					<Button onClick={() => history.push(`/wishlist/update/${wishlist.id}&child_profile_id=${childId}`)}>Update Wishlist</Button>
 					<Button onClick={handleDelete}>Delete Wishlist</Button>
 				</Panel>	
 
